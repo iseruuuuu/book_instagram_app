@@ -26,6 +26,7 @@ class _FeedScreenState extends State<FeedScreen> {
                     fontSize: 32,
                   ),
                 ),
+
                 Row(
                   children: [
                     IconButton(
