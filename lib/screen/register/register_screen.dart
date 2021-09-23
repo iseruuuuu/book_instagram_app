@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 import 'children/register_app_bar.dart';
 import 'children/register_photo_button.dart';
+import 'children/register_textfield.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -57,22 +58,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ],
           ),
-          Container(
-            margin: const EdgeInsets.all(8.0),
-            padding: const EdgeInsets.only(bottom: 40.0),
-            child: TextField(
-              keyboardType: TextInputType.multiline,
-              maxLines: 6,
-              decoration: const InputDecoration(
-                hintText: "",
-                border: OutlineInputBorder(),
-              ),
-              autofocus: true,
-              onChanged: (text) {
-                // value = text;
-              },
-            ),
-          ),
+          const RegisterTextField(),
         ],
       ),
     );
