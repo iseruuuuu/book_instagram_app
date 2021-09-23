@@ -38,10 +38,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child:
-                image == null
-                    ? const Text('画像が選択されていません')
-                    : Image.file(image!),
+            child: image == null
+                ? const Text('画像が選択されていません')
+                : Image.file(image!),
           ),
           Center(
             child: TextButton(
