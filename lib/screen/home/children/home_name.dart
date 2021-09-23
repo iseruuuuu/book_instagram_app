@@ -8,35 +8,30 @@ class HomeName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(18.0),
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
       child: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  'Ryutaro Iseki',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'Ryutaro Iseki',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(
-                  'ekrarasrsrssrasrarrarsrarasarrsarai',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+              ),
+              Text(
+                'ekrarasrsrssrasrarrarsrarasarrsarai',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(
-                  'Rsekrsarsarasrsrsrrarsarsrarrsarsrarsarsari',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue
-                  ),
-                ),
-              ],
-            ),
+              ),
+              Text(
+                'Rsekrsarsarasrsrsrrarsarsrarrsarsrarsarsari',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+              ),
+            ],
           ),
         ],
       ),
