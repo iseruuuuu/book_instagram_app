@@ -28,7 +28,6 @@ class _FeedScreenState extends State<FeedScreen> {
                     fontSize: 32,
                   ),
                 ),
-
                 Row(
                   children: [
                     IconButton(
@@ -38,7 +37,9 @@ class _FeedScreenState extends State<FeedScreen> {
                         print('IGTV');
                       },
                     ),
-                    const SizedBox(width: 16,),
+                    const SizedBox(
+                      width: 16,
+                    ),
                     Container(
                       width: 35,
                       child: IconButton(

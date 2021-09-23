@@ -1,3 +1,4 @@
+import 'package:book_instagram_app/screen/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomsAppBar extends StatelessWidget {
@@ -39,13 +40,23 @@ class BottomsAppBar extends StatelessWidget {
             ),
             title: const Text(''),
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person_outline,
-              size: 40.0,
-              color: Colors.grey,
+          BottomNavigationBarItem(
+            icon: FlatButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ),
+                );
+              },
+              child: const Icon(
+                Icons.person,
+                size: 30.0,
+                color: Colors.black,
+              ),
             ),
-            title: Text(''),
+            title: const Text(''),
           ),
         ],
       ),
