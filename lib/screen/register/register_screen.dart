@@ -18,14 +18,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Future getImage() async {
     //カメラロールから読み取る
-    //final pickedFile = await picker.getImage(source: ImageSource.gallery);
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {
         image = File(pickedFile.path);
       } else {
         //ダイアログを出す？？
-        print('画像が選択できませんでした。');
+        print('画像が選択できませんでした');
+      }
+    });
+  }
+
+  Future getCamera() async {
+    //カメラを開く
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    setState(() {
+      if (pickedFile != null) {
+        image = File(pickedFile.path);
+      } else {
+        print('カメラで画像が取得できませんでした');
       }
     });
   }
@@ -48,7 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             children: [
               PhotoWidget(
                 text: '写真を撮る',
-                onTap: getImage,
+                onTap: getCamera,
               ),
               PhotoWidget(
                 text: '写真を選択する',
