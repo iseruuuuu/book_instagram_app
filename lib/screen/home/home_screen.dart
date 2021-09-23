@@ -1,3 +1,4 @@
+import 'package:book_instagram_app/component/bottom_appbar.dart';
 import 'package:book_instagram_app/component/bubble_stories.dart';
 import 'package:book_instagram_app/component/home_name.dart';
 import 'package:book_instagram_app/component/home_number.dart';
@@ -68,6 +69,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: const BottomsAppBar(),
     );
   }
 }
