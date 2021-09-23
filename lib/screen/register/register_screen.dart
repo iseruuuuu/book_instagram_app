@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'children/register_app_bar.dart';
+import 'children/register_photo_button.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -39,14 +40,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
         children: [
           Center(
             child: image == null
+                //適当な写真を載せる？？
                 ? const Text('画像が選択されていません')
                 : Image.file(image!),
           ),
-          Center(
-            child: TextButton(
-              onPressed: getImage,
-              child: const Text('画像を選択する'),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              PhotoWidget(
+                text: '写真を撮る',
+                onTap: getImage,
+              ),
+              PhotoWidget(
+                text: '写真を選択する',
+                onTap: getImage,
+              ),
+            ],
           ),
           Container(
             margin: const EdgeInsets.all(8.0),
