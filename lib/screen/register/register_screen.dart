@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'children/register_app_bar.dart';
 import 'children/register_photo_button.dart';
 import 'children/register_textfield.dart';
