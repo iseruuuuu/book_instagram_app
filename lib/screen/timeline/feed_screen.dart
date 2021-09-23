@@ -1,4 +1,4 @@
-import 'package:book_instagram_app/component/bubble_stories.dart';
+import 'package:book_instagram_app/screen/home/children/bubble_stories.dart';
 import 'package:flutter/material.dart';
 import '../../component/bottom_appbar.dart';
 
