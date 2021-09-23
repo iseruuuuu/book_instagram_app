@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../component/bottom_appbar.dart';
+import '../../component/bottom_appbar.dart';
 
 class FeedScreen extends StatefulWidget {
   @override
