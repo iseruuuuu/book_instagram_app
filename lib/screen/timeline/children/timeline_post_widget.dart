@@ -45,10 +45,8 @@ class PostWidget extends StatelessWidget {
                           blurRadius: 8.0,
                         ),
                       ],
-                      // image: DecrationImage(image: AssetImage(posts[0].imageUrl))
                       image: DecorationImage(
-                        image: AssetImage('assets/i.jpeg'),
-                        //image: Image.file('imagePath'),
+                        image: AssetImage(imagePath),
                         fit: BoxFit.fill,
                       ),
                     ),

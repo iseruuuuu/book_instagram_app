@@ -53,14 +53,9 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
               },
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          //return const Center(child: CircularProgressIndicator());
+          return Container();
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //登録画面に飛ぶ
-        },
-        child: const Icon(Icons.add, size: 40),
       ),
     );
   }
