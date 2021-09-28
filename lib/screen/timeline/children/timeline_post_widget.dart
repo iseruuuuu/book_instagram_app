@@ -1,9 +1,14 @@
+import 'package:book_instagram_app/screen/timeline/later/timeline_icon_button_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PostWidget extends StatelessWidget {
   const PostWidget({
     Key? key,
+    required this.contents,
   }) : super(key: key);
+
+  final String contents;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +16,7 @@ class PostWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: Container(
         width: double.infinity,
-        height: 560,
+        height: 600,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(25),
@@ -22,47 +27,10 @@ class PostWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 children: <Widget>[
-                  ListTile(
-                    leading: Container(
-                      width: 50,
-                      height: 50,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black45,
-                            offset: Offset(0, 2),
-                            blurRadius: 6.0,
-                          ),
-                        ],
-                      ),
-                      child: const CircleAvatar(
-                        child: Icon(
-                          Icons.accessibility,
-                        ),
-                      ),
-                    ),
-                    title: const Text(
-                      // posts[0].authorName,
-                      'Ryutaro Iseki',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    // subtitle: Text(post[0].tomeAgo),
-                    subtitle: const Text('明日の話題'),
-                    trailing: IconButton(
-                      icon: Icon(Icons.more_horiz),
-                      color: Colors.black,
-                      onPressed: () {
-                        print('More');
-                      },
-                    ),
-                  ),
                   Container(
                     margin: const EdgeInsets.all(10),
-                    width: double.infinity,
-                    height: 400,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
                       boxShadow: const [
@@ -80,53 +48,13 @@ class PostWidget extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Row(
-                          children: [
-                            Row(
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  iconSize: 30,
-                                  icon: const Icon(Icons.favorite_border),
-                                ),
-                                const Text(
-                                  '2,515',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                const SizedBox(width: 10),
-                                Row(
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      iconSize: 30,
-                                      icon: const Icon(Icons.chat),
-                                    ),
-                                    const Text(
-                                      '350',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          iconSize: 30,
-                          icon: const Icon(Icons.bookmark_border),
-                        ),
-                      ],
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    child: Text(
+                      contents,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],

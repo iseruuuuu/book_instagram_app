@@ -31,11 +31,7 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
               ],
             ),
           ),
-          const PostWidget(),
-          const PostWidget(),
-          const PostWidget(),
-          const PostWidget(),
-          const PostWidget(),
+          const PostWidget(contents: '投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容投稿内容',),
         ],
       ),
     );
