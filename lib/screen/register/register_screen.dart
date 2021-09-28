@@ -1,92 +1,91 @@
-// Dart imports:
+// Flutter imports:
 import 'dart:io';
 
-// Flutter imports:
+import 'package:book_instagram_app/screen/register/register_screen_state.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:provider/provider.dart';
 
-// Project imports:
 import 'children/register_app_bar.dart';
 import 'children/register_no_image.dart';
 import 'children/register_photo_button.dart';
 import 'children/register_textfield.dart';
 
-class RegisterScreen extends StatefulWidget {
+class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
-}
-
-class _RegisterScreenState extends State<RegisterScreen> {
-  File? image;
-  final picker = ImagePicker();
-
-  Future getImage() async {
-    //カメラロールから読み取る
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      if (pickedFile != null) {
-        image = File(pickedFile.path);
-      } else {
-        //ダイアログを出す？？
-        print('画像が選択できませんでした');
-      }
-    });
-  }
-
-  Future getCamera() async {
-    //カメラを開く
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
-    setState(() {
-      if (pickedFile != null) {
-        image = File(pickedFile.path);
-      } else {
-        print('カメラで画像が取得できませんでした');
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: RegisterAppBar(
-        onTap: () {
-
-        },
+    return StateNotifierProvider<RegisterScreenController, RegisterScreenState>(
+      create: (_) => RegisterScreenController(
+        context: context,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: image == null
-                ? const NoImageWidget()
-                : SizedBox(
-                    width: MediaQuery.of(context).size.width / 1.1,
-                    height: MediaQuery.of(context).size.width / 1.6,
-                    child: Image.file(image!),
-                  ),
+      builder: (context, _) {
+        final images = context
+            .select<RegisterScreenState, String>((state) => state.imagePath);
+        return Scaffold(
+          appBar: RegisterAppBar(
+            onTap: () {
+              //タブをホーム画面に移動させる。
+
+
+              //データを追加する。
+              // if (_newTodo!.id == null) {
+              //   DBBloc?.create(_newTodo);
+              // } else {
+              //   todoBloc?.update(_newTodo);
+              // }
+            },
           ),
-          const RegisterTextField(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              PhotoWidget(
-                icon: Icons.camera_alt_outlined,
-                text: ' 写真を撮る',
-                onTap: getCamera,
+              Center(
+                //child: images == null
+                child: images.isEmpty
+                    ? const NoImageWidget()
+                    : SizedBox(
+                        width: MediaQuery.of(context).size.width / 1.1,
+                        height: MediaQuery.of(context).size.width / 1.6,
+                        //child: Image.file(image!),
+                        //child: Image.file(images)
+                        //child: FileImage(File(path)),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: FileImage(
+                                File(images),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
               ),
-              PhotoWidget(
-                icon: Icons.photo_size_select_actual_outlined,
-                text: ' 写真を選択',
-                onTap: getImage,
+              const RegisterTextField(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  PhotoWidget(
+                    icon: Icons.camera_alt_outlined,
+                    text: ' 写真を撮る',
+                    onTap: () =>
+                        context.read<RegisterScreenController>().getCamera(),
+                  ),
+                  PhotoWidget(
+                    icon: Icons.photo_size_select_actual_outlined,
+                    text: ' 写真を選択',
+                    onTap: () =>
+                        context.read<RegisterScreenController>().getImage(),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
