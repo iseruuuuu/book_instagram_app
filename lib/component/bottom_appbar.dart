@@ -1,6 +1,6 @@
 import 'package:book_instagram_app/screen/home/home_screen.dart';
 import 'package:book_instagram_app/screen/register/register_screen.dart';
-import 'package:book_instagram_app/screen/timeline/feed_screen.dart';
+import 'package:book_instagram_app/screen/timeline/timeline_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomsAppBar extends StatelessWidget {
@@ -24,7 +24,7 @@ class BottomsAppBar extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => FeedScreen(),
+                    builder: (context) => TimeLineScreen(),
                   ),
                 );
               },

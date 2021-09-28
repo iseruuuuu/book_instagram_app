@@ -2,14 +2,14 @@ import 'package:book_instagram_app/screen/home/children/bubble_stories.dart';
 import 'package:flutter/material.dart';
 import '../../component/bottom_appbar.dart';
 
-class FeedScreen extends StatefulWidget {
-  const FeedScreen({Key? key}) : super(key: key);
+class TimeLineScreen extends StatefulWidget {
+  const TimeLineScreen({Key? key}) : super(key: key);
 
   @override
-  _FeedScreenState createState() => _FeedScreenState();
+  _TimeLineScreenState createState() => _TimeLineScreenState();
 }
 
-class _FeedScreenState extends State<FeedScreen> {
+class _TimeLineScreenState extends State<TimeLineScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

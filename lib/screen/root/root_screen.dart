@@ -1,6 +1,6 @@
 import 'package:book_instagram_app/screen/home/home_screen.dart';
 import 'package:book_instagram_app/screen/register/register_screen.dart';
-import 'package:book_instagram_app/screen/timeline/feed_screen.dart';
+import 'package:book_instagram_app/screen/timeline/timeline_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
@@ -24,7 +24,7 @@ class RootScreen extends StatelessWidget {
               return CupertinoPageScaffold(
                 child: const [
                   //画面を入れていく
-                  FeedScreen(),
+                  TimeLineScreen(),
                   RegisterScreen(),
                   HomeScreen(),
                 ][index],
