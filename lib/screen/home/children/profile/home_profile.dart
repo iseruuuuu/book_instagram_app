@@ -35,6 +35,7 @@ class HomeProfileWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: const [
                           HomeIcon(),
+                          SizedBox(),
                           HomeNumber(
                             count: 1,
                             title: '投稿数',
