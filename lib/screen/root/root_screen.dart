@@ -8,9 +8,7 @@ import 'package:book_instagram_app/screen/root/root_screen_state.dart';
 import 'package:provider/provider.dart';
 
 class RootScreen extends StatelessWidget {
-  const RootScreen({
-    Key? key,
-  }) : super(key: key);
+  const RootScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
