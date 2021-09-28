@@ -19,60 +19,18 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
         physics: const AlwaysScrollableScrollPhysics(),
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                const Text(
+              children: const <Widget>[
+                Text(
                   'Book Library',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 32,
                   ),
                 ),
-                Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.live_tv),
-                      iconSize: 30,
-                      onPressed: () {
-                        print('IGTV');
-                      },
-                    ),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Container(
-                      width: 35,
-                      child: IconButton(
-                        icon: const Icon(Icons.send),
-                        iconSize: 30,
-                        onPressed: () {
-                          print('IGTV');
-                        },
-                      ),
-                    ),
-                  ],
-                ),
               ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            child: SizedBox(
-              height: 110,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: const [
-                  BubbleStories(text: 'story 1'),
-                  BubbleStories(text: 'story 2'),
-                  BubbleStories(text: 'story 3'),
-                  BubbleStories(text: 'story 4'),
-                  BubbleStories(text: 'story 5'),
-                  BubbleStories(text: 'story 6'),
-                  BubbleStories(text: 'story 7'),
-                ],
-              ),
             ),
           ),
           const PostWidget(),
