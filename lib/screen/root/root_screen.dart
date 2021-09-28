@@ -39,39 +39,38 @@ class RootScreen extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home_outlined,
-                  size: 40.0,
+                  size: 35.0,
                   color: Colors.black,
                 ),
                 activeIcon: Icon(
                   Icons.home,
-                  size: 40.0,
+                  size: 35.0,
                   color: Colors.black,
                 ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.add_box_outlined,
-                  size: 40.0,
+                  size: 35.0,
                   color: Colors.black,
                 ),
                 activeIcon: Icon(
                   Icons.add_box_rounded,
-                  size: 40.0,
+                  size: 35.0,
                   color: Colors.black,
                 ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.person_outline,
-                  size: 40.0,
+                  size: 35.0,
                   color: Colors.black,
                 ),
                 activeIcon: Icon(
                   Icons.person,
-                  size: 40.0,
+                  size: 35.0,
                   color: Colors.black,
                 ),
-                title: Text(''),
               ),
             ],
           ),
