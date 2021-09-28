@@ -17,24 +17,14 @@ class RegisterAppBar extends StatelessWidget with PreferredSizeWidget {
         '新規投稿',
         style: TextStyle(color: Colors.black),
       ),
-      automaticallyImplyLeading: true,
-      leading: GestureDetector(
-        onTap: () {
-          Navigator.pop(context);
-        },
-        child: const Icon(
-          Icons.arrow_back,
-          size: 30,
-          color: Colors.black,
-        ),
-      ),
+      automaticallyImplyLeading: false,
       actions: [
         Padding(
           padding: const EdgeInsets.all(10),
           child: GestureDetector(
             onTap: () {
               //値を渡してあげる。
-              Navigator.pop(context);
+              // Navigator.pop(context);
             },
             child: const Text(
               '投稿',
