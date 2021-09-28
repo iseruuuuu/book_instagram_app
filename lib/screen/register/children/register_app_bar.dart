@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 class RegisterAppBar extends StatelessWidget with PreferredSizeWidget {
   const RegisterAppBar({
     Key? key,
+    required this.onTap,
   }) : super(key: key);
+
+  final Function onTap;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -23,9 +26,7 @@ class RegisterAppBar extends StatelessWidget with PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.all(10),
           child: GestureDetector(
-            onTap: () {
-              //値を渡してあげる。
-            },
+            onTap: onTap(),
             child: const Text(
               '投稿',
               style: TextStyle(

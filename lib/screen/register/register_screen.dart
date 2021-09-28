@@ -52,7 +52,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const RegisterAppBar(),
+      appBar: RegisterAppBar(
+        onTap: () {
+
+        },
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

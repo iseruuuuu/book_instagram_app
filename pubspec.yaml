@@ -56,6 +56,10 @@ dev_dependencies:
 
   rxdart:
 
+  sqflite:
+  path_provider:
+  uuid:
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
