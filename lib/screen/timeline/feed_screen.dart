@@ -81,7 +81,6 @@ class _FeedScreenState extends State<FeedScreen> {
           const PostWidget(),
         ],
       ),
-      bottomNavigationBar: const BottomsAppBar(),
     );
   }
 }

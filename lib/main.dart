@@ -1,3 +1,4 @@
+import 'package:book_instagram_app/screen/root/root_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'screen/timeline/feed_screen.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: FeedScreen(),
+      home: RootScreen(),
     );
   }
 }
