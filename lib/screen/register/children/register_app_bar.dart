@@ -24,7 +24,6 @@ class RegisterAppBar extends StatelessWidget with PreferredSizeWidget {
           child: GestureDetector(
             onTap: () {
               //値を渡してあげる。
-              // Navigator.pop(context);
             },
             child: const Text(
               '投稿',

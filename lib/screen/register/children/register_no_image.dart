@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NoImageWidget extends StatelessWidget {
-  const NoImageWidget({
-    Key? key,
-  }) : super(key: key);
+  const NoImageWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

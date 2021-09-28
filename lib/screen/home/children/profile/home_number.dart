@@ -22,7 +22,7 @@ class HomeNumber extends StatelessWidget {
           ),
         ),
         Text(
-            title,
+          title,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
