@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'children/register_app_bar.dart';
+import 'children/register_no_image.dart';
 import 'children/register_photo_button.dart';
 import 'children/register_textfield.dart';
 
@@ -50,17 +51,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         children: [
           Center(
             child: image == null
-                ? Container(
-                    width: MediaQuery.of(context).size.width / 1.1,
-                    height: MediaQuery.of(context).size.width / 1.6,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.red),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Center(
-                      child: Text('画像が選択されていません'),
-                    ),
-                  )
+                ? const NoImageWidget()
                 : SizedBox(
                     width: MediaQuery.of(context).size.width / 1.1,
                     height: MediaQuery.of(context).size.width / 1.6,
