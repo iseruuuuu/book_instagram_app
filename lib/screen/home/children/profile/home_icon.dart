@@ -8,11 +8,16 @@ class HomeIcon extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Container(
-        height: 100,
         width: 100,
-        decoration: BoxDecoration(
-          color: Colors.grey[300],
+        height: 100,
+        decoration: const BoxDecoration(
+          color: Colors.blue,
           shape: BoxShape.circle,
+        ),
+        child: const Icon(
+          Icons.person,
+          size: 90,
+          color: Colors.white,
         ),
       ),
     );
