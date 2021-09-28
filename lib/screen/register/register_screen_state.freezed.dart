@@ -29,7 +29,6 @@ const $RegisterScreenState = _$RegisterScreenStateTearOff();
 
 /// @nodoc
 mixin _$RegisterScreenState {
-//@Default('') File imagePath,
   String get imagePath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -107,7 +106,7 @@ class _$_RegisterScreenState implements _RegisterScreenState {
   const _$_RegisterScreenState({this.imagePath = ''});
 
   @JsonKey(defaultValue: '')
-  @override //@Default('') File imagePath,
+  @override
   final String imagePath;
 
   @override
@@ -139,7 +138,7 @@ abstract class _RegisterScreenState implements RegisterScreenState {
   const factory _RegisterScreenState({String imagePath}) =
       _$_RegisterScreenState;
 
-  @override //@Default('') File imagePath,
+  @override
   String get imagePath => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

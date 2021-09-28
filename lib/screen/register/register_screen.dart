@@ -1,6 +1,8 @@
 // Flutter imports:
 import 'dart:io';
 
+import 'package:book_instagram_app/repository/model.dart';
+import 'package:book_instagram_app/repository/model/db_bloc.dart';
 import 'package:book_instagram_app/screen/register/register_screen_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,37 +24,24 @@ class RegisterScreen extends StatelessWidget {
     return StateNotifierProvider<RegisterScreenController, RegisterScreenState>(
       create: (_) => RegisterScreenController(
         context: context,
+        todo: Todo(),
+        todoBloc: DBBloc(),
       ),
       builder: (context, _) {
-        final images = context
-            .select<RegisterScreenState, String>((state) => state.imagePath);
+        final images = context.select<RegisterScreenState, String>((state) => state.imagePath);
         return Scaffold(
           appBar: RegisterAppBar(
-            onTap: () {
-              //タブをホーム画面に移動させる。
-
-
-              //データを追加する。
-              // if (_newTodo!.id == null) {
-              //   DBBloc?.create(_newTodo);
-              // } else {
-              //   todoBloc?.update(_newTodo);
-              // }
-            },
+            onTap: () => context.read<RegisterScreenController>().onTapPost(),
           ),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
-                //child: images == null
                 child: images.isEmpty
                     ? const NoImageWidget()
                     : SizedBox(
                         width: MediaQuery.of(context).size.width / 1.1,
                         height: MediaQuery.of(context).size.width / 1.6,
-                        //child: Image.file(image!),
-                        //child: Image.file(images)
-                        //child: FileImage(File(path)),
                         child: Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -64,7 +53,9 @@ class RegisterScreen extends StatelessWidget {
                         ),
                       ),
               ),
-              const RegisterTextField(),
+              RegisterTextField(
+               onChanged: context.read<RegisterScreenController>().setContents,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

@@ -2,6 +2,8 @@
 import 'dart:io';
 
 // Flutter imports:
+import 'package:book_instagram_app/repository/model.dart';
+import 'package:book_instagram_app/repository/model/db_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,20 +17,27 @@ part 'register_screen_state.freezed.dart';
 @freezed
 class RegisterScreenState with _$RegisterScreenState {
   const factory RegisterScreenState({
-    //@Default('') File imagePath,
     @Default('') String imagePath,
   }) = _RegisterScreenState;
 }
 
-class RegisterScreenController extends StateNotifier<RegisterScreenState>
-    with LocatorMixin {
-  RegisterScreenController({
-    required this.context,
-  }) : super(RegisterScreenState());
-
+class RegisterScreenController extends StateNotifier<RegisterScreenState> with LocatorMixin {
   final BuildContext context;
   File? image;
   final picker = ImagePicker();
+  final DBBloc todoBloc;
+  final Todo todo;
+  final Todo _newTodo = Todo.newTodo();
+
+  RegisterScreenController({
+    required this.context,
+    required this.todoBloc,
+    required this.todo,
+  }) : super(const RegisterScreenState()) {
+    _newTodo.id = todo.id;
+    _newTodo.contents = todo.contents;
+    _newTodo.imagePath = todo.imagePath;
+  }
 
   @override
   void initState() {
@@ -38,6 +47,21 @@ class RegisterScreenController extends StateNotifier<RegisterScreenState>
   @override
   void dispose() {
     super.dispose();
+  }
+
+  void onTapPost() {
+    if (_newTodo.id == null) {
+      todoBloc.create(_newTodo);
+    } else {
+      //todoBloc.update(_newTodo);
+    }
+    print(todo.imagePath);
+    print(todo.contents);
+    print(todo.id);
+  }
+
+  void setContents(String contents) {
+    _newTodo.contents = contents;
   }
 
   Future getImage() async {

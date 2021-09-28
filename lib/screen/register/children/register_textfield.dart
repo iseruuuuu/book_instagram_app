@@ -2,7 +2,12 @@
 import 'package:flutter/material.dart';
 
 class RegisterTextField extends StatelessWidget {
-  const RegisterTextField({Key? key}) : super(key: key);
+  const RegisterTextField({
+    Key? key,
+    required this.onChanged,
+  }) : super(key: key);
+
+  final Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +22,7 @@ class RegisterTextField extends StatelessWidget {
           border: OutlineInputBorder(),
         ),
         autofocus: true,
-        onChanged: (text) {
-          // value = text;
-        },
+        onChanged: onChanged,
       ),
     );
   }

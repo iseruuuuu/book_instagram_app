@@ -7,7 +7,7 @@ class RegisterAppBar extends StatelessWidget with PreferredSizeWidget {
     required this.onTap,
   }) : super(key: key);
 
-  final Function onTap;
+  final Function() onTap;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -26,7 +26,7 @@ class RegisterAppBar extends StatelessWidget with PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.all(10),
           child: GestureDetector(
-            onTap: onTap(),
+            onTap: onTap,
             child: const Text(
               '投稿',
               style: TextStyle(
