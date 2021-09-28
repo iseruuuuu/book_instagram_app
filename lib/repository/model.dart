@@ -4,8 +4,10 @@ import 'package:uuid/uuid.dart';
 class Todo {
   // 登録したときに使うもの
   String? id;
+
   //記載した内容
   String? contents;
+
   //画像のパス
   String? imagePath;
 
