@@ -50,24 +50,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
         children: [
           Center(
             child: image == null
-                //適当な写真を載せる？？
-                ? const Text('画像が選択されていません')
-                : Image.file(image!),
+                ? Container(
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    height: MediaQuery.of(context).size.width / 1.6,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.red),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Center(
+                      child: Text('画像が選択されていません'),
+                    ),
+                  )
+                : SizedBox(
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    height: MediaQuery.of(context).size.width / 1.6,
+                    child: Image.file(image!),
+                  ),
           ),
+          const RegisterTextField(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               PhotoWidget(
-                text: '写真を撮る',
+                icon: Icons.camera_alt_outlined,
+                text: ' 写真を撮る',
                 onTap: getCamera,
               ),
               PhotoWidget(
-                text: '写真を選択する',
+                icon: Icons.photo_size_select_actual_outlined,
+                text: ' 写真を選択',
                 onTap: getImage,
               ),
             ],
           ),
-          const RegisterTextField(),
         ],
       ),
     );

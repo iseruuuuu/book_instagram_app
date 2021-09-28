@@ -16,7 +16,7 @@ class PostWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: Container(
         width: double.infinity,
-        height: 600,
+        height: MediaQuery.of(context).size.height / 1.3,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(25),
@@ -29,8 +29,8 @@ class PostWidget extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     margin: const EdgeInsets.all(10),
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    height: MediaQuery.of(context).size.width / 1.2,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
                       boxShadow: const [
