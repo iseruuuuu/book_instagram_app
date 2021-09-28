@@ -1,6 +1,4 @@
-import 'package:book_instagram_app/screen/home/children/bubble_stories.dart';
 import 'package:flutter/material.dart';
-import '../../component/bottom_appbar.dart';
 import 'children/timeline_post_widget.dart';
 
 class TimeLineScreen extends StatefulWidget {

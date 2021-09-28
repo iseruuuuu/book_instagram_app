@@ -1,8 +1,8 @@
-import 'package:book_instagram_app/screen/home/children/home_appbar.dart';
+import 'package:book_instagram_app/screen/home/children/profile/home_appbar.dart';
 import 'package:book_instagram_app/component/post_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'children/home_profile.dart';
+import 'children/profile/home_profile.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
