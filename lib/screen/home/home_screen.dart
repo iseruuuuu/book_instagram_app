@@ -2,8 +2,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:provider/provider.dart';
+
 // Project imports:
 import 'package:book_instagram_app/component/post_item.dart';
+import 'package:book_instagram_app/repository/model.dart';
+import 'package:book_instagram_app/repository/model/db_bloc.dart';
+import 'package:book_instagram_app/repository/model/provider.dart';
 import 'package:book_instagram_app/screen/home/children/profile/home_appbar.dart';
 import 'children/profile/home_profile.dart';
 
@@ -12,6 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _bloc = Provider.of<DBBloc>(context, listen: false);
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: const HomeAppBar(),
