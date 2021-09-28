@@ -1,8 +1,6 @@
 import 'package:book_instagram_app/screen/root/root_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'screen/timeline/feed_screen.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -12,14 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: RootScreen(),
     );
   }
 }
-
