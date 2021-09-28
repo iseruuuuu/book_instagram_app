@@ -1,3 +1,6 @@
+// Dart imports:
+import 'dart:ui';
+
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +9,11 @@ class PostWidget extends StatelessWidget {
   const PostWidget({
     Key? key,
     required this.contents,
+    required this.imagePath,
   }) : super(key: key);
 
   final String contents;
+  final String imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +46,9 @@ class PostWidget extends StatelessWidget {
                         ),
                       ],
                       // image: DecrationImage(image: AssetImage(posts[0].imageUrl))
-                      image: const DecorationImage(
+                      image: DecorationImage(
                         image: AssetImage('assets/i.jpeg'),
+                        //image: Image.file('imagePath'),
                         fit: BoxFit.fill,
                       ),
                     ),
