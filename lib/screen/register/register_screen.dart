@@ -1,6 +1,13 @@
+// Dart imports:
 import 'dart:io';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:image_picker/image_picker.dart';
+
+// Project imports:
 import 'children/register_app_bar.dart';
 import 'children/register_no_image.dart';
 import 'children/register_photo_button.dart';

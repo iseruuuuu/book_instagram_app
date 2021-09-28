@@ -1,8 +1,11 @@
-import 'package:flutter/material.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:state_notifier/state_notifier.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:state_notifier/state_notifier.dart';
 
 part 'root_screen_state.freezed.dart';
 
