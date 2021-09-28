@@ -1,18 +1,21 @@
 /*
+
 // Dart imports:
 import 'dart:io';
 
 // Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:image_picker/image_picker.dart';
+
+// Project imports:
 import 'package:book_instagram_app/repository/model.dart';
 import 'package:book_instagram_app/repository/model/db_bloc.dart';
 import 'package:book_instagram_app/screen/register/children/register_app_bar.dart';
 import 'package:book_instagram_app/screen/register/children/register_no_image.dart';
 import 'package:book_instagram_app/screen/register/children/register_photo_button.dart';
 import 'package:book_instagram_app/screen/register/children/register_textfield.dart';
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:image_picker/image_picker.dart';
 
 // Project imports:
 

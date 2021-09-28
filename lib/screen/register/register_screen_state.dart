@@ -2,15 +2,17 @@
 import 'dart:io';
 
 // Flutter imports:
-import 'package:book_instagram_app/repository/model.dart';
-import 'package:book_instagram_app/repository/model/db_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:state_notifier/state_notifier.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:state_notifier/state_notifier.dart';
+
+// Project imports:
+import 'package:book_instagram_app/repository/model.dart';
+import 'package:book_instagram_app/repository/model/db_bloc.dart';
 
 part 'register_screen_state.freezed.dart';
 
