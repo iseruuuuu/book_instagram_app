@@ -37,12 +37,6 @@ class PostWidget extends StatelessWidget {
                         ],
                       ),
                       child: const CircleAvatar(
-                        // child: Image(
-                        //   height: 60,
-                        //   width: 60,
-                        //   image: AssetImage(storiers[index - 1]),
-                        //   fit: BoxFit.cover,
-                        // )
                         child: Icon(
                           Icons.accessibility,
                         ),
@@ -106,7 +100,7 @@ class PostWidget extends StatelessWidget {
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                                 Row(
                                   children: [
                                     IconButton(
