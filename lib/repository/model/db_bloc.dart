@@ -5,8 +5,9 @@ import 'dart:async';
 import 'package:book_instagram_app/repository/model.dart';
 import 'package:book_instagram_app/repository/model/provider.dart';
 
-class DBBloc {
+class TodoBloc {
   final _todoController = StreamController<List<Todo>>();
+
   Stream<List<Todo>> get todoStream => _todoController.stream;
 
   getTodos() async {
@@ -18,6 +19,7 @@ class DBBloc {
   }
 
   dispose() {
+    //多くのアプリケーションは1つのデータベースを使用し、データベースを閉じる必要はありません（アプリケーションが終了するとデータベースは閉じられます）。リソースを解放したい場合は、データベースを閉じることができます。
     _todoController.close();
   }
 

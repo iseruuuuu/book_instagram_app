@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _bloc = Provider.of<DBBloc>(context, listen: false);
+    final _bloc = Provider.of<TodoBloc>(context, listen: false);
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: const HomeAppBar(),

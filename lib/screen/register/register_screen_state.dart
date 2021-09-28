@@ -27,7 +27,7 @@ class RegisterScreenController extends StateNotifier<RegisterScreenState> with L
   final BuildContext context;
   File? image;
   final picker = ImagePicker();
-  final DBBloc todoBloc;
+  final TodoBloc todoBloc;
   final Todo todo;
   final Todo _newTodo = Todo.newTodo();
 
@@ -51,38 +51,40 @@ class RegisterScreenController extends StateNotifier<RegisterScreenState> with L
     super.dispose();
   }
 
+  void setContents(String contents) {
+    _newTodo.contents = contents;
+    todo.contents = contents;
+    print(contents);
+  }
+
   void onTapPost() {
     if (_newTodo.id == null) {
       todoBloc.create(_newTodo);
     } else {
       //todoBloc.update(_newTodo);
+      print(todo.id);
+      print(todo.imagePath);
+      print(todo.contents);
     }
-    print(todo.imagePath);
-    print(todo.contents);
-    print(todo.id);
+
   }
 
-  void setContents(String contents) {
-    _newTodo.contents = contents;
-  }
 
   Future getImage() async {
     //カメラロールから読み取る
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    // state = state.copyWith(
-    //   imagePath: pickedFile.path;
-    // );
-
     if (pickedFile != null) {
       image = File(pickedFile.path);
       var imagePath = pickedFile.path.toString();
+      todo.imagePath = imagePath;
       state = state.copyWith(
         imagePath: imagePath,
       );
     } else {
-      //ダイアログを出す？？
       print('画像が選択できませんでした');
     }
+
+
   }
 
   Future getCamera() async {

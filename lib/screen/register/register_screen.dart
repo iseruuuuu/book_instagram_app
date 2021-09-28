@@ -27,7 +27,7 @@ class RegisterScreen extends StatelessWidget {
       create: (_) => RegisterScreenController(
         context: context,
         todo: Todo(),
-        todoBloc: DBBloc(),
+        todoBloc: TodoBloc(),
       ),
       builder: (context, _) {
         final images = context.select<RegisterScreenState, String>((state) => state.imagePath);

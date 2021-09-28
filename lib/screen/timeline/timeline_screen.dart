@@ -21,7 +21,7 @@ class TimeLineScreen extends StatefulWidget {
 class _TimeLineScreenState extends State<TimeLineScreen> {
   @override
   Widget build(BuildContext context) {
-    final _bloc = Provider.of<DBBloc>(context, listen: false);
+    final _bloc = Provider.of<TodoBloc>(context, listen: false);
     return Scaffold(
       backgroundColor: const Color(0xFFEDF0F6),
       body: StreamBuilder<List<Todo>>(

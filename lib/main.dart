@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Provider<DBBloc>(
-        create: (context) => DBBloc(),
+      home: Provider<TodoBloc>(
+        create: (context) => TodoBloc(),
         child: const RootScreen(),
       ),
     );
