@@ -2,8 +2,8 @@
 import 'dart:async';
 
 // Project imports:
-import 'package:book_instagram_app/repository/model.dart';
-import 'package:book_instagram_app/repository/model/provider.dart';
+import 'package:book_instagram_app/repository/model/model.dart';
+import 'package:book_instagram_app/repository/database/provider.dart';
 
 class TodoBloc {
   final _todoController = StreamController<List<Todo>>();

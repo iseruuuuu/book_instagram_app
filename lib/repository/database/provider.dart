@@ -8,7 +8,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 // Project imports:
-import '../model.dart';
+import '../model/model.dart';
 
 class DBProvider {
   // privateなコンストラクタ

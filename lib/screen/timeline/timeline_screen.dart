@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
-import 'package:book_instagram_app/repository/model.dart';
-import 'package:book_instagram_app/repository/model.dart';
-import 'package:book_instagram_app/repository/model/db_bloc.dart';
-import 'package:book_instagram_app/repository/model/provider.dart';
+import 'package:book_instagram_app/repository/model/model.dart';
+import 'package:book_instagram_app/repository/model/model.dart';
+import 'package:book_instagram_app/repository/database/db_bloc.dart';
+import 'package:book_instagram_app/repository/database/provider.dart';
 import 'children/timeline_post_widget.dart';
 
 class TimeLineScreen extends StatefulWidget {

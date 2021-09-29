@@ -10,8 +10,8 @@ import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
-import 'package:book_instagram_app/repository/model.dart';
-import 'package:book_instagram_app/repository/model/db_bloc.dart';
+import 'package:book_instagram_app/repository/model/model.dart';
+import 'package:book_instagram_app/repository/database/db_bloc.dart';
 import 'package:book_instagram_app/screen/register/register_screen_state.dart';
 import 'children/register_app_bar.dart';
 import 'children/register_no_image.dart';
