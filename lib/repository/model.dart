@@ -26,7 +26,7 @@ class Todo {
     id = const Uuid().v4();
   }
 
-  factory Todo.formMap(Map<String, dynamic> json) => Todo(
+  factory Todo.fromMap(Map<String, dynamic> json) => Todo(
         id: json["id"],
         contents: json["contents"],
         imagePath: json["imagePath"],
