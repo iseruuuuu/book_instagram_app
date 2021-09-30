@@ -1,14 +1,12 @@
 import 'package:book_instagram_app/repository/database/provider.dart';
 import 'package:book_instagram_app/repository/model/model.dart';
-import 'package:book_instagram_app/screen/register/children/register_app_bar.dart';
+import 'package:book_instagram_app/screen/register/children/register_no_image.dart';
 import 'package:book_instagram_app/screen/register/children/register_photo_button.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class TodoEditScreen extends StatelessWidget {
-  final DateFormat _format = DateFormat("yyyy/MM/dd HH:mm");
   final TodoBloc? todoBloc;
   final Todo todo;
   final Todo _newTodo = Todo.newTodo();
@@ -31,20 +29,13 @@ class TodoEditScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(Icons.arrow_back_ios),
         ),
         actions: [
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              '追加',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
-          ),
+          _confirmButton(context),
         ],
       ),
       body: Container(
@@ -52,9 +43,7 @@ class TodoEditScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _titleTextFormField(),
             _noteTextFormField(),
-            _confirmButton(context),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -68,17 +57,42 @@ class TodoEditScreen extends StatelessWidget {
     );
   }
 
-  Widget _titleTextFormField() => TextFormField(
-        decoration: const InputDecoration(labelText: "タイトル"),
-        //初期の値
-        initialValue: _newTodo.title,
-        //変更を常に知らせる。
-        onChanged: _setTitle,
+  Widget _confirmButton(BuildContext context) => TextButton(
+        child: const Text(
+          '登録',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        onPressed: () {
+          if (_newTodo.id == null) {
+            todoBloc?.create(_newTodo);
+          } else {
+            todoBloc?.update(_newTodo);
+          }
+          Navigator.of(context).pop();
+        },
       );
 
-  void _setTitle(String title) {
-    _newTodo.title = title;
-  }
+  // Widget PhotoWidget(BuildContext context) => Center(
+  //       child: todo.title.isEmpty
+  //           ? const NoImageWidget()
+  //           : SizedBox(
+  //               width: MediaQuery.of(context).size.width / 1.1,
+  //               height: MediaQuery.of(context).size.width / 1.6,
+  //               child: Container(
+  //                 decoration: BoxDecoration(
+  //                   image: DecorationImage(
+  //                     image: FileImage(
+  //                       //File(_newTodo.title),
+  //                       File(_newTodo.title),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ),
+  //             ),
+  //     );
 
   Widget _noteTextFormField() => TextFormField(
         decoration: const InputDecoration(labelText: "メモ"),
@@ -90,30 +104,6 @@ class TodoEditScreen extends StatelessWidget {
   void _setNote(String note) {
     _newTodo.note = note;
   }
-
-  Widget _confirmButton(BuildContext context) => SizedBox(
-        width: 100,
-        height: 100,
-        child: RaisedButton.icon(
-          icon: const Icon(
-            Icons.tag_faces,
-            color: Colors.white,
-          ),
-          label: const Text('決定'),
-          onPressed: () {
-            //id で管理をする。
-            if (_newTodo.id == null) {
-              todoBloc?.create(_newTodo);
-            } else {
-              todoBloc?.update(_newTodo);
-            }
-            Navigator.of(context).pop();
-          },
-          shape: const StadiumBorder(),
-          color: Colors.green,
-          textColor: Colors.white,
-        ),
-      );
 
   void onRegister(BuildContext context) {
     if (_newTodo.id == null) {
