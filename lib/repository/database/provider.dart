@@ -1,74 +1,46 @@
-// Dart imports:
-import 'dart:io';
+import 'dart:async';
 
-// Package imports:
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:sqflite/sqlite_api.dart';
+import 'package:book_instagram_app/repository/model/model.dart';
 
-// Project imports:
-import '../model/model.dart';
+import 'db_bloc.dart';
 
-class DBProvider {
-  // privateなコンストラクタ
-  DBProvider._();
 
-  static final DBProvider db = DBProvider._();
-  static Database? _database;
-  static final _tableName = "Todo";
 
-  Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await initDB();
-    return _database!;
+class TodoBloc {
+  final _todoController = StreamController<List<Todo>>();
+  Stream<List<Todo>> get todoStream => _todoController.stream;
+
+  getTodos() async {
+    _todoController.sink.add(await DBProvider.db.getAllTodos());
   }
 
-  Future<Database> initDB() async {
-    Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "TodoDB.db");
-    return await openDatabase(path, version: 1, onCreate: _createTable);
+  TodoBloc() {
+    getTodos();
   }
 
-  Future<void> _createTable(Database db, int version) async {
-    return await db.execute("CREATE TABLE $_tableName ("
-        "id TEXT PRIMARY KEY,"
-        "title TEXT,"
-        "dueDate TEXT,"
-        "note TEXT"
-        ")");
+  dispose() {
+    //多くのアプリケーションは1つのデータベースを使用し、データベースを閉じる必要はありません（アプリケーションが終了するとデータベースは閉じられます）。リソースを解放したい場合は、データベースを閉じることができます。
+    _todoController.close();
   }
 
-  createTodo(Todo todo) async {
-    final db = await database;
-    var res = await db.insert(_tableName, todo.toMap());
-    return res;
+  create(Todo todo) {
+    todo.assignUUID();
+    DBProvider.db.createTodo(todo);
+    getTodos();
   }
 
-  getAllTodos() async {
-    final db = await database;
-    var res = await db.query(_tableName);
-    List<Todo> list =
-        res.isNotEmpty ? res.map((c) => Todo.fromMap(c)).toList() : [];
-    return list;
+  update(Todo todo) {
+    DBProvider.db.updateTodo(todo);
+    getTodos();
   }
 
-  updateTodo(Todo todo) async {
-    final db = await database;
-    var res = db
-      ..update(_tableName, todo.toMap(), where: "id = ?", whereArgs: [todo.id]);
-    return res;
+  delete(String id) {
+    DBProvider.db.deleteTodo(id);
+    getTodos();
   }
 
-  deleteTodo(String id) async {
-    final db = await database;
-    var res = db.delete(_tableName, where: "id = ?", whereArgs: [id]);
-    return res;
-  }
-
-  deleteAllTodo() async {
-    final db = await database;
-    var res = db.delete('id');
-    return res;
+  allDelete() {
+    DBProvider.db.deleteAllTodo();
+    getTodos();
   }
 }

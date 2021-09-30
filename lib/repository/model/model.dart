@@ -1,25 +1,20 @@
-// Package imports:
+import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
 class Todo {
-  // 登録したときに使うもの
   String? id;
-
-  //記載した内容
-  String? contents;
-
-  //画像のパス
-  String? imagePath;
+  String? title;
+  String? note;
 
   Todo({
     this.id,
-    this.contents,
-    this.imagePath,
+    this.title,
+    this.note,
   });
 
   Todo.newTodo() {
-    contents = "";
-    imagePath = "";
+    title = "";
+    note = "";
   }
 
   assignUUID() {
@@ -27,14 +22,14 @@ class Todo {
   }
 
   factory Todo.fromMap(Map<String, dynamic> json) => Todo(
-        id: json["id"],
-        contents: json["contents"],
-        imagePath: json["imagePath"],
-      );
+    id: json["id"],
+    title: json["title"],
+    note: json["note"],
+  );
 
   Map<String, dynamic> toMap() => {
-        "id": id,
-        "contents": contents,
-        "imagePath": imagePath,
-      };
+    "id": id,
+    "title": title,
+    "note": note,
+  };
 }
