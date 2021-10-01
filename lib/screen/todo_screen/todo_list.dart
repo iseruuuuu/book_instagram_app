@@ -53,7 +53,10 @@ class TodoListScreen extends StatelessWidget {
         onPressed: () {
           _moveToCreateView(context, _bloc);
         },
-        child: const Icon(Icons.add, size: 40),
+        child: const Icon(
+          Icons.add,
+          size: 30,
+        ),
       ),
     );
   }
