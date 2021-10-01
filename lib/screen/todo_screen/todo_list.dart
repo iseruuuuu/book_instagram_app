@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:book_instagram_app/screen/timeline/children/timeline_post_widget.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -8,6 +7,7 @@ import 'package:provider/provider.dart';
 // Project imports:
 import 'package:book_instagram_app/repository/database/provider.dart';
 import 'package:book_instagram_app/repository/model/model.dart';
+import 'package:book_instagram_app/screen/timeline/children/timeline_post_widget.dart';
 import 'package:book_instagram_app/screen/todo_screen/todo_edit.dart';
 
 class TodoListScreen extends StatelessWidget {
