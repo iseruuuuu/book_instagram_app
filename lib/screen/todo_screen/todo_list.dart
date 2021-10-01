@@ -20,7 +20,7 @@ class TodoListScreen extends StatelessWidget {
     final _bloc = Provider.of<TodoBloc>(context, listen: false);
     return Scaffold(
       backgroundColor: const Color(0xFFEDF0F6),
-      appBar: TodoAppBar(),
+      appBar: const TodoAppBar(),
       body: StreamBuilder<List<Todo>>(
         stream: _bloc.todoStream,
         builder: (BuildContext context, AsyncSnapshot<List<Todo>> snapshot) {
