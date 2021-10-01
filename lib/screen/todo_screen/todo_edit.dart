@@ -25,7 +25,6 @@ class TodoEditScreen extends StatelessWidget {
     this.todoBloc,
     required this.todo,
   }) : super(key: key) {
-    //初期値
     _newTodo.id = todo.id;
     _newTodo.title = todo.title;
     _newTodo.note = todo.note;
@@ -50,13 +49,13 @@ class TodoEditScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _PhotoWidget(context),
+            _photoWidget(context),
             _noteTextFormField(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _PhotoButton(context),
-                _CameraButton(context),
+                _photoButton(context),
+                _cameraButton(context),
               ],
             ),
           ],
@@ -83,7 +82,7 @@ class TodoEditScreen extends StatelessWidget {
         },
       );
 
-  Widget _PhotoWidget(BuildContext context) => Center(
+  Widget _photoWidget(BuildContext context) => Center(
         child: todo.title == ''
             ? const NoImageWidget()
             : SizedBox(
@@ -121,7 +120,7 @@ class TodoEditScreen extends StatelessWidget {
     Navigator.of(context).pop();
   }
 
-  Widget _PhotoButton(BuildContext context) => PhotoWidget(
+  Widget _photoButton(BuildContext context) => PhotoWidget(
         icon: Icons.camera_alt_outlined,
         text: ' 写真を撮る',
         onTap: getCamera,
@@ -138,7 +137,7 @@ class TodoEditScreen extends StatelessWidget {
     }
   }
 
-  Widget _CameraButton(BuildContext context) => PhotoWidget(
+  Widget _cameraButton(BuildContext context) => PhotoWidget(
         icon: Icons.photo_size_select_actual_outlined,
         text: ' 写真を選択',
         onTap: getImage,

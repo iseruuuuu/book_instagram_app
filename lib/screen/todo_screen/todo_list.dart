@@ -31,9 +31,7 @@ class TodoListScreen extends StatelessWidget {
                 Todo todo = snapshot.data![index];
                 return Dismissible(
                   key: Key(todo.id!),
-                  //スライドで削除できる機能　＝＞左 => 右
                   background: _backgroundOfDismissible(),
-                  //スライドで削除できる機能　 => 右 => 左
                   secondaryBackground: _secondaryBackgroundOfDismissible(),
                   onDismissed: (direction) {
                     _bloc.delete(todo.id!);
@@ -53,7 +51,6 @@ class TodoListScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          //登録画面に飛ぶ
           _moveToCreateView(context, _bloc);
         },
         child: const Icon(Icons.add, size: 40),
@@ -65,8 +62,6 @@ class TodoListScreen extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          //todoBloc StreamController
-          //todo Todoのデータ
           builder: (context) => TodoEditScreen(todoBloc: bloc, todo: todo),
         ),
       );
