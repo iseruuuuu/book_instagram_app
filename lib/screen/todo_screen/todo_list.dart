@@ -1,4 +1,6 @@
 // Flutter imports:
+import 'package:book_instagram_app/screen/todo_screen/todo_appbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -18,11 +20,7 @@ class TodoListScreen extends StatelessWidget {
     final _bloc = Provider.of<TodoBloc>(context, listen: false);
     return Scaffold(
       backgroundColor: const Color(0xFFEDF0F6),
-      appBar: AppBar(
-        title: Text('あああ'),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
+      appBar: TodoAppBar(),
       body: StreamBuilder<List<Todo>>(
         stream: _bloc.todoStream,
         builder: (BuildContext context, AsyncSnapshot<List<Todo>> snapshot) {
