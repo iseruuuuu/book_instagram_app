@@ -17,9 +17,11 @@ class TodoListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final _bloc = Provider.of<TodoBloc>(context, listen: false);
     return Scaffold(
+      backgroundColor: const Color(0xFFEDF0F6),
       appBar: AppBar(
+        title: Text('あああ'),
         backgroundColor: Colors.white,
-        elevation: 2,
+        elevation: 0,
       ),
       body: StreamBuilder<List<Todo>>(
         stream: _bloc.todoStream,

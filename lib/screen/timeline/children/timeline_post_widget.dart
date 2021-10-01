@@ -18,10 +18,9 @@ class PostWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
       child: Container(
         width: double.infinity,
-        height: MediaQuery.of(context).size.height / 1.3,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(25),
@@ -33,8 +32,7 @@ class PostWidget extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Container(
-                    margin: const EdgeInsets.all(10),
-                    width: MediaQuery.of(context).size.width / 1.2,
+                    width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.width / 1.2,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
@@ -52,7 +50,7 @@ class PostWidget extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 30),
                     child: Text(
                       contents,
                       style: const TextStyle(
