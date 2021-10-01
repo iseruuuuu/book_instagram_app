@@ -1,10 +1,17 @@
+// Dart imports:
+import 'dart:io';
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:image_picker/image_picker.dart';
+
+// Project imports:
 import 'package:book_instagram_app/repository/database/provider.dart';
 import 'package:book_instagram_app/repository/model/model.dart';
 import 'package:book_instagram_app/screen/register/children/register_no_image.dart';
 import 'package:book_instagram_app/screen/register/children/register_photo_button.dart';
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 
 class TodoEditScreen extends StatelessWidget {
   final TodoBloc? todoBloc;
@@ -43,6 +50,7 @@ class TodoEditScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            _PhotoWidget(context),
             _noteTextFormField(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,24 +83,23 @@ class TodoEditScreen extends StatelessWidget {
         },
       );
 
-  // Widget PhotoWidget(BuildContext context) => Center(
-  //       child: todo.title.isEmpty
-  //           ? const NoImageWidget()
-  //           : SizedBox(
-  //               width: MediaQuery.of(context).size.width / 1.1,
-  //               height: MediaQuery.of(context).size.width / 1.6,
-  //               child: Container(
-  //                 decoration: BoxDecoration(
-  //                   image: DecorationImage(
-  //                     image: FileImage(
-  //                       //File(_newTodo.title),
-  //                       File(_newTodo.title),
-  //                     ),
-  //                   ),
-  //                 ),
-  //               ),
-  //             ),
-  //     );
+  Widget _PhotoWidget(BuildContext context) => Center(
+        child: todo.title == ''
+            ? const NoImageWidget()
+            : SizedBox(
+                width: MediaQuery.of(context).size.width / 1.1,
+                height: MediaQuery.of(context).size.width / 1.6,
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: FileImage(
+                        File(_newTodo.title!),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+      );
 
   Widget _noteTextFormField() => TextFormField(
         decoration: const InputDecoration(labelText: "メモ"),
@@ -142,6 +149,8 @@ class TodoEditScreen extends StatelessWidget {
     if (pickedFile != null) {
       image = File(pickedFile.path);
       var imagePath = pickedFile.path.toString();
+      _newTodo.title = imagePath;
+      print(_newTodo.title);
     } else {
       print('画像が選択できませんでした');
     }
