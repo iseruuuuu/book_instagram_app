@@ -16,7 +16,7 @@ class TodoAppBar extends StatelessWidget with PreferredSizeWidget {
             'Bookgram',
             style: TextStyle(
               color: Colors.black,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w900,
               fontSize: 25,
             ),
           ),
