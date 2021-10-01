@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:book_instagram_app/screen/timeline/children/timeline_post_widget.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -38,10 +39,9 @@ class TodoListScreen extends StatelessWidget {
                     _bloc.delete(todo.id!);
                   },
                   child: Card(
-                    child: ListTile(
-                      title: Text("${todo.id}"),
-                      subtitle: Text("${todo.title}"),
-                      trailing: Text("${todo.note}"),
+                    child: PostWidget(
+                      contents: '${todo.note}',
+                      imagePath: '${todo.title}',
                     ),
                   ),
                 );
