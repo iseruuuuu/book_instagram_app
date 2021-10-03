@@ -1,5 +1,7 @@
 // Flutter imports:
 import 'package:book_instagram_app/repository/model/model.dart';
+import 'package:book_instagram_app/screen/detail/detail_screen.dart';
+import 'package:book_instagram_app/screen/edit/todo_edit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -26,15 +28,7 @@ class TodoHomeScreen extends StatelessWidget {
           if (snapshot.hasData) {
             return Column(
               children: [
-                HomeProfileWidget(
-                  count: snapshot.data?.length.toInt(),
-                ),
-                //TODO 後で実装（多分使わない？）
-                //const HomeName(),
-                //TODO 後で実装（多分使わない?);
-                //const ProfileButton(),
-                //TODO 後で実装
-                //const HomeStory(),
+                HomeProfileWidget(count: snapshot.data?.length.toInt()),
                 Expanded(
                   child: Container(
                     color: Colors.white,
@@ -45,12 +39,23 @@ class TodoHomeScreen extends StatelessWidget {
                               crossAxisCount: 3),
                       itemBuilder: (BuildContext context, int index) {
                         Todo todo = snapshot.data![index];
-                        return Card(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(todo.title.toString()),
-                                fit: BoxFit.fill,
+                        return GestureDetector(
+                          //onTap: _moveToEditView(context,_bloc,todo),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailScreen(todoBloc: _bloc, todo: todo),
+                              ),
+                            );
+                          },
+                          child: Card(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(todo.title.toString()),
+                                  fit: BoxFit.fill,
+                                ),
                               ),
                             ),
                           ),
@@ -68,3 +73,11 @@ class TodoHomeScreen extends StatelessWidget {
     );
   }
 }
+
+_moveToEditView(BuildContext context, TodoBloc bloc, Todo todo) =>
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TodoEditScreen(todoBloc: bloc, todo: todo),
+      ),
+    );
