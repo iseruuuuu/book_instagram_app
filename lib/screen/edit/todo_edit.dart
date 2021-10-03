@@ -107,7 +107,7 @@ class TodoEditScreen extends StatelessWidget {
       );
 
   Widget _noteTextFormField() => TextFormField(
-        decoration: const InputDecoration(labelText: "メモ"),
+        decoration: const InputDecoration(labelText: "Memo"),
         initialValue: _newTodo.note,
         maxLines: 3,
         onChanged: _setNote,
