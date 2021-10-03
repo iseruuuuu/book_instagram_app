@@ -2,16 +2,16 @@
 import 'dart:io';
 
 // Flutter imports:
-import 'package:book_instagram_app/component/register/register_no_image.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:image_picker/image_picker.dart';
 
 // Project imports:
+import 'package:book_instagram_app/component/register/register_no_image.dart';
+import 'package:book_instagram_app/component/register/register_photo_button.dart';
 import 'package:book_instagram_app/repository/database/provider.dart';
 import 'package:book_instagram_app/repository/model/model.dart';
-import 'package:book_instagram_app/component/register/register_photo_button.dart';
 
 class TodoEditScreen extends StatelessWidget {
   final TodoBloc? todoBloc;

@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:book_instagram_app/component/home/home_profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
+import 'package:book_instagram_app/component/home/home_appbar.dart';
+import 'package:book_instagram_app/component/home/home_profile.dart';
 import 'package:book_instagram_app/component/post_item.dart';
 import 'package:book_instagram_app/repository/database/db_bloc.dart';
 import 'package:book_instagram_app/repository/database/provider.dart';
 import 'package:book_instagram_app/repository/model/model.dart';
-import 'package:book_instagram_app/component/home/home_appbar.dart';
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

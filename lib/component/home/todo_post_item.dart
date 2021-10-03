@@ -1,12 +1,14 @@
 // Flutter imports:
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+// Package imports:
 import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:book_instagram_app/repository/database/provider.dart';
 import 'package:book_instagram_app/repository/model/model.dart';
-
-import 'package:flutter/cupertino.dart';
 
 class TodoPostItem extends StatelessWidget {
   const TodoPostItem({Key? key}) : super(key: key);
