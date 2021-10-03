@@ -34,13 +34,16 @@ class TodoEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 1,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           icon: const Icon(
-              Icons.close,
+            Icons.close,
             size: 40,
+            color: Colors.black,
           ),
         ),
         actions: [
@@ -69,10 +72,10 @@ class TodoEditScreen extends StatelessWidget {
 
   Widget _confirmButton(BuildContext context) => TextButton(
         child: const Text(
-          '登録',
+          '投稿',
           style: TextStyle(
             fontSize: 20,
-            color: Colors.white,
+            color: Colors.blue,
           ),
         ),
         onPressed: () {
