@@ -58,7 +58,6 @@ class TodoHomeScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  //child: TodoPostItem(),
                 ),
               ],
             );
