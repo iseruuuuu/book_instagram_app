@@ -45,7 +45,8 @@ class TodoHomeScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => DetailScreen(todoBloc: _bloc, todo: todo),
+                                builder: (context) =>
+                                    DetailScreen(todoBloc: _bloc, todo: todo),
                               ),
                             );
                           },
