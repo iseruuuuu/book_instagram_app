@@ -2,6 +2,7 @@
 import 'dart:io';
 
 // Flutter imports:
+import 'package:book_instagram_app/todo_less/todo_edit_less_state.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -12,15 +13,16 @@ import 'package:book_instagram_app/repository/database/provider.dart';
 import 'package:book_instagram_app/repository/model/model.dart';
 import 'package:book_instagram_app/screen/register/children/register_no_image.dart';
 import 'package:book_instagram_app/screen/register/children/register_photo_button.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 
-class TodoEditScreen extends StatelessWidget {
+class TodoEditScreens extends StatelessWidget {
   final TodoBloc? todoBloc;
   final Todo todo;
   final Todo _newTodo = Todo.newTodo();
   File? image;
   final picker = ImagePicker();
 
-  TodoEditScreen({
+  TodoEditScreens({
     Key? key,
     this.todoBloc,
     required this.todo,
@@ -32,35 +34,43 @@ class TodoEditScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(Icons.arrow_back_ios),
-        ),
-        actions: [
-          _confirmButton(context),
-        ],
+    return StateNotifierProvider<RRegisterScreenController,
+        RRegisterScreenState>(
+      create: (_) => RRegisterScreenController(
+        context: context,
       ),
-      body: Container(
-        padding: const EdgeInsets.all(30.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            _photoWidget(context),
-            _noteTextFormField(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _photoButton(context),
-                _cameraButton(context),
+      builder: (context, _) {
+        return Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: const Icon(Icons.arrow_back_ios),
+            ),
+            actions: [
+              _confirmButton(context),
+            ],
+          ),
+          body: Container(
+            padding: const EdgeInsets.all(30.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _photoWidget(context),
+                _noteTextFormField(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _photoButton(context),
+                    _cameraButton(context),
+                  ],
+                ),
               ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 

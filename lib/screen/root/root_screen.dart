@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:book_instagram_app/todo_less_home/todo_less_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,8 @@ class RootScreen extends StatelessWidget {
               return CupertinoPageScaffold(
                 child: const [
                   TodoListScreen(),
-                  HomeScreen(),
+                  //HomeScreen(),
+                  TodoHomeScreen(),
                 ][index],
               );
             });

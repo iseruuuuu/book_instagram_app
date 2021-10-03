@@ -4,9 +4,10 @@ import 'dart:async';
 // Project imports:
 import 'package:book_instagram_app/repository/model/model.dart';
 import 'db_bloc.dart';
+import 'package:rxdart/rxdart.dart';
 
 class TodoBloc {
-  final _todoController = StreamController<List<Todo>>();
+  final _todoController = BehaviorSubject<List<Todo>>();
   Stream<List<Todo>> get todoStream => _todoController.stream;
 
   getTodos() async {

@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:book_instagram_app/todo_less_home/todo_post_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,8 @@ import 'package:book_instagram_app/repository/model/model.dart';
 import 'package:book_instagram_app/screen/home/children/profile/home_appbar.dart';
 import 'package:book_instagram_app/screen/home/children/profile/home_profile.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class TodoHomeScreen extends StatelessWidget {
+  const TodoHomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +33,7 @@ class HomeScreen extends StatelessWidget {
           //TODO 後で実装
           //const HomeStory(),
           Expanded(
-            child: PostItem(
-
-            ),
+            child: TodoPostItem(),
           ),
         ],
       ),
