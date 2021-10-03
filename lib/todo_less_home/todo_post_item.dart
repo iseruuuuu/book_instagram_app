@@ -14,15 +14,12 @@ class TodoPostItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _bloc = Provider.of<TodoBloc>(context, listen: false);
-    //final Bloc bloc;
     return Scaffold(
       body: StreamBuilder<List<Todo>>(
         stream: _bloc.todoStream,
         builder: (BuildContext context, AsyncSnapshot<List<Todo>> snapshot) {
           if (snapshot.hasData) {
-            //return ListView.builder(
             return GridView.builder(
-              //itemCount: 10,
               itemCount: snapshot.data?.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3),
@@ -41,7 +38,9 @@ class TodoPostItem extends StatelessWidget {
               },
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: Text('まだ投稿されていません！'),
+          );
         },
       ),
     );
