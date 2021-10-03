@@ -69,6 +69,7 @@ class TodoListScreen extends StatelessWidget {
     MaterialPageRoute(
       builder: (context) =>
           TodoEditScreen(todoBloc: bloc, todo: Todo.newTodo()),
+      fullscreenDialog: true
     ),
   );
 
