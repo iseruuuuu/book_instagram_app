@@ -34,4 +34,15 @@ class Preference {
     final pref = await preference;
     await pref.setBool(EnumToString.convertToString(key), value);
   }
+
+  Future<String> getString(PreferenceKey key) async {
+    final pref = await preference;
+    final value = pref.getString(EnumToString.convertToString(key)) ?? '';
+    return value;
+  }
+
+  Future<void> setString(PreferenceKey key, String value) async {
+    final pref = await preference;
+    await pref.setString(EnumToString.convertToString(key), value);
+  }
 }

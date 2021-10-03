@@ -13,7 +13,7 @@ part 'home_profile_state.freezed.dart';
 class HomeProfileState with _$HomeProfileState {
   const factory HomeProfileState({
     @Default(0) int day,
-}) = _HomeProfileState;
+  }) = _HomeProfileState;
 }
 
 class HomeProfileController extends StateNotifier<HomeProfileState>
@@ -21,53 +21,53 @@ class HomeProfileController extends StateNotifier<HomeProfileState>
   HomeProfileController({
     required this.context,
     required this.preference,
-  }) : super(const HomeProfileState());
+  }) : super(HomeProfileState());
 
   final BuildContext context;
   final Preference preference;
 
-
   @override
   void initState() {
     super.initState();
-    state = state.copyWith(
-      day: 14
-    );
-  }
-
-  Future<void> checkFirst() async {
-    await preference.getBool(PreferenceKey.isFirstBuilding);
+    state = state.copyWith(day: 14);
+    check();
+    reloadDay();
   }
 
   Future<void> check() async {
-   //if(await preference.getBool(PreferenceKey.isFirstBuilding) ?? false) return;
-   final check = await preference.getBool(PreferenceKey.isFirstBuilding);
-   if (check == false) return;
-
-   //記録した日を登録する。
-   final now = DateTime.now();
-   final nowDay = now.day;
-   print(nowDay);
-   await preference.setInt(PreferenceKey.firstDay, nowDay);
+    final check = await preference.getBool(PreferenceKey.isFirstBuilding);
+    if (check == true) return;
+    await preference.setBool(PreferenceKey.isFirstBuilding, true);
+    //記録した日を登録する。
+    final now = DateTime.now().toString();
+    //await preference.setInt(PreferenceKey.firstDay, nowDay);
+    await preference.setString(PreferenceKey.firstDay, now);
   }
-
-
 
   Future<void> reloadDay() async {
-    await preference.getInt(PreferenceKey.pastDays);
-  }
+    //登録した日を読み込む
+    //final registerDay = await preference.getInt(PreferenceKey.firstDay);
 
+    final registerDay = await preference.getString(PreferenceKey.firstDay);
 
+    final date = DateTime.parse(registerDay);
 
-  Future<void> writeDay() async {
+    print(date);
 
-    //初日を出す。
+    //今日の日を登録
+    final now = DateTime.now();
+    final nowDay = now.day;
 
-    //初日と今日の差分を出す。
+    //final i = registerDay.difference(now);
 
+    // final pastTime = date.difference(now);
 
-    //保存差分を保存する。
-    var pastDay = 0;
-    await preference.setInt(PreferenceKey.pastDays, 11);
+    //今日の日 - 登録した日  ＝  〇〇日め
+    final pastTime = now.difference(date);
+
+    final day = pastTime.inDays;
+    state = state.copyWith(
+      day: day,
+    );
   }
 }
