@@ -90,7 +90,7 @@ class TodoEditScreen extends StatelessWidget {
 
   Widget _photoWidget(BuildContext context) => Center(
         child: todo.title == ''
-            ? const NoImageWidget()
+            ? GestureDetector(onTap: getImage, child: const NoImageWidget())
             : SizedBox(
                 width: MediaQuery.of(context).size.width / 1.1,
                 height: MediaQuery.of(context).size.width / 1.6,
