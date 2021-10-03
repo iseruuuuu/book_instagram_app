@@ -36,24 +36,27 @@ class TodoHomeScreen extends StatelessWidget {
                 //TODO 後で実装
                 //const HomeStory(),
                 Expanded(
-                  child: GridView.builder(
-                    itemCount: snapshot.data?.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3),
-                    itemBuilder: (BuildContext context, int index) {
-                      Todo todo = snapshot.data![index];
-                      return Card(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(todo.title.toString()),
-                              fit: BoxFit.fill,
+                  child: Container(
+                    color: Colors.white,
+                    child: GridView.builder(
+                      itemCount: snapshot.data?.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3),
+                      itemBuilder: (BuildContext context, int index) {
+                        Todo todo = snapshot.data![index];
+                        return Card(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(todo.title.toString()),
+                                fit: BoxFit.fill,
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                   //child: TodoPostItem(),
                 ),
