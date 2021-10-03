@@ -2,7 +2,12 @@
 import 'package:flutter/material.dart';
 
 class TodoAppBar extends StatelessWidget with PreferredSizeWidget {
-  const TodoAppBar({Key? key}) : super(key: key);
+  const TodoAppBar({
+    Key? key,
+    required this.onTap,
+  }) : super(key: key);
+
+  final Function() onTap;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -11,13 +16,22 @@ class TodoAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Row(
-        children: const [
-          Text(
+        children: [
+          const Text(
             'Bookgram',
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w900,
               fontSize: 25,
+            ),
+          ),
+          const Spacer(),
+          GestureDetector(
+            onTap: onTap,
+            child: const Icon(
+              Icons.add_box_outlined,
+              color: Colors.black,
+              size: 30,
             ),
           ),
         ],

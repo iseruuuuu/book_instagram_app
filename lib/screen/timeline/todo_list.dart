@@ -20,7 +20,11 @@ class TodoListScreen extends StatelessWidget {
     final _bloc = Provider.of<TodoBloc>(context, listen: false);
     return Scaffold(
       backgroundColor: const Color(0xFFEDF0F6),
-      appBar: const TodoAppBar(),
+      appBar: TodoAppBar(
+        onTap: () {
+          _moveToCreateView(context, _bloc);
+        },
+      ),
       body: StreamBuilder<List<Todo>>(
         stream: _bloc.todoStream,
         builder: (BuildContext context, AsyncSnapshot<List<Todo>> snapshot) {
@@ -49,15 +53,6 @@ class TodoListScreen extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _moveToCreateView(context, _bloc);
-        },
-        child: const Icon(
-          Icons.add,
-          size: 30,
-        ),
-      ),
     );
   }
 
@@ -70,28 +65,28 @@ class TodoListScreen extends StatelessWidget {
       );
 
   _moveToCreateView(BuildContext context, TodoBloc bloc) => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) =>
-              TodoEditScreen(todoBloc: bloc, todo: Todo.newTodo()),
-        ),
-      );
+    context,
+    MaterialPageRoute(
+      builder: (context) =>
+          TodoEditScreen(todoBloc: bloc, todo: Todo.newTodo()),
+    ),
+  );
 
   _backgroundOfDismissible() => Container(
-        alignment: Alignment.centerLeft,
-        color: Colors.green,
-        child: const Padding(
-          padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-          child: Icon(Icons.done, color: Colors.white),
-        ),
-      );
+    alignment: Alignment.centerLeft,
+    color: Colors.green,
+    child: const Padding(
+      padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+      child: Icon(Icons.done, color: Colors.white),
+    ),
+  );
 
   _secondaryBackgroundOfDismissible() => Container(
-        alignment: Alignment.centerRight,
-        color: Colors.red,
-        child: const Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-          child: Icon(Icons.done, color: Colors.white),
-        ),
-      );
+    alignment: Alignment.centerRight,
+    color: Colors.red,
+    child: const Padding(
+      padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+      child: Icon(Icons.done, color: Colors.white),
+    ),
+  );
 }
