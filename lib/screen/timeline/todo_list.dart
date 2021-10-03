@@ -65,29 +65,28 @@ class TodoListScreen extends StatelessWidget {
       );
 
   _moveToCreateView(BuildContext context, TodoBloc bloc) => Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) =>
-          TodoEditScreen(todoBloc: bloc, todo: Todo.newTodo()),
-      fullscreenDialog: true
-    ),
-  );
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                TodoEditScreen(todoBloc: bloc, todo: Todo.newTodo()),
+            fullscreenDialog: true),
+      );
 
   _backgroundOfDismissible() => Container(
-    alignment: Alignment.centerLeft,
-    color: Colors.green,
-    child: const Padding(
-      padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-      child: Icon(Icons.done, color: Colors.white),
-    ),
-  );
+        alignment: Alignment.centerLeft,
+        color: Colors.green,
+        child: const Padding(
+          padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+          child: Icon(Icons.done, color: Colors.white),
+        ),
+      );
 
   _secondaryBackgroundOfDismissible() => Container(
-    alignment: Alignment.centerRight,
-    color: Colors.red,
-    child: const Padding(
-      padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-      child: Icon(Icons.done, color: Colors.white),
-    ),
-  );
+        alignment: Alignment.centerRight,
+        color: Colors.red,
+        child: const Padding(
+          padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+          child: Icon(Icons.done, color: Colors.white),
+        ),
+      );
 }

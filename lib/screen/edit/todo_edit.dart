@@ -60,6 +60,7 @@ class TodoEditScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                _text(),
                 _photoButton(context),
                 _cameraButton(context),
               ],
@@ -88,8 +89,15 @@ class TodoEditScreen extends StatelessWidget {
         },
       );
 
+  Widget _text() => Container(
+        child: Text(
+          //todo.note!,
+          _newTodo.note!,
+        ),
+      );
+
   Widget _photoWidget(BuildContext context) => Center(
-        child: todo.title == ''
+        child: todo.note == ''
             ? GestureDetector(onTap: getImage, child: const NoImageWidget())
             : SizedBox(
                 width: MediaQuery.of(context).size.width / 1.1,
@@ -118,7 +126,7 @@ class TodoEditScreen extends StatelessWidget {
   }
 
   void onRegister(BuildContext context) {
-    if (_newTodo.id == null) {
+    if (_newTodo.id == null ) {
       todoBloc?.create(_newTodo);
     } else {
       todoBloc?.update(_newTodo);
