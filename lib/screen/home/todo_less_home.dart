@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 // Project imports:
 import 'package:book_instagram_app/component/home/home_appbar.dart';
 import 'package:book_instagram_app/component/home/home_profile.dart';
-import 'package:book_instagram_app/component/home/todo_post_item.dart';
 import 'package:book_instagram_app/repository/database/provider.dart';
 
 class TodoHomeScreen extends StatelessWidget {
