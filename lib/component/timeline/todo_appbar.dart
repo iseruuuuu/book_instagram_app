@@ -18,7 +18,7 @@ class TodoAppBar extends StatelessWidget with PreferredSizeWidget {
       title: Row(
         children: [
           const Text(
-            'Bookgram',
+            ' Bookgram',
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w900,
@@ -31,7 +31,7 @@ class TodoAppBar extends StatelessWidget with PreferredSizeWidget {
             child: const Icon(
               Icons.add_box_outlined,
               color: Colors.black,
-              size: 30,
+              size: 40,
             ),
           ),
         ],
