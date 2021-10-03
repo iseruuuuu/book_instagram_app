@@ -1,5 +1,7 @@
 // Flutter imports:
-import 'package:book_instagram_app/todo_less_home/todo_post_item.dart';
+import 'package:book_instagram_app/component/home/home_appbar.dart';
+import 'package:book_instagram_app/component/home/home_profile.dart';
+import 'package:book_instagram_app/component/home/todo_post_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,12 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
-import 'package:book_instagram_app/component/post_item.dart';
-import 'package:book_instagram_app/repository/database/db_bloc.dart';
 import 'package:book_instagram_app/repository/database/provider.dart';
-import 'package:book_instagram_app/repository/model/model.dart';
-import 'package:book_instagram_app/screen/home/children/profile/home_appbar.dart';
-import 'package:book_instagram_app/screen/home/children/profile/home_profile.dart';
 
 class TodoHomeScreen extends StatelessWidget {
   const TodoHomeScreen({Key? key}) : super(key: key);
@@ -24,8 +21,8 @@ class TodoHomeScreen extends StatelessWidget {
       backgroundColor: Colors.grey.shade200,
       appBar: const HomeAppBar(),
       body: Column(
-        children: [
-          const HomeProfileWidget(),
+        children: const [
+          HomeProfileWidget(),
           //TODO 後で実装（多分使わない？）
           //const HomeName(),
           //TODO 後で実装（多分使わない?);

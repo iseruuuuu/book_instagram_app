@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'home_icon.dart';
+import '../../../../component/home/home_icon.dart';
 import 'home_number.dart';
 
 class HomeProfileWidget extends StatelessWidget {

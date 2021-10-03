@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:book_instagram_app/screen/todo_screen/todo_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +8,9 @@ import 'package:provider/provider.dart';
 // Project imports:
 import 'package:book_instagram_app/repository/database/provider.dart';
 import 'package:book_instagram_app/repository/model/model.dart';
-import 'package:book_instagram_app/screen/timeline/children/timeline_post_widget.dart';
-import 'package:book_instagram_app/screen/todo_screen/todo_edit.dart';
+import 'package:book_instagram_app/component/timeline/timeline_post_widget.dart';
+import 'package:book_instagram_app/component/timeline/todo_appbar.dart';
+import 'package:book_instagram_app/screen/edit/todo_edit.dart';
 
 class TodoListScreen extends StatelessWidget {
   const TodoListScreen({Key? key}) : super(key: key);
