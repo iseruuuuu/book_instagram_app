@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:book_instagram_app/repository/model/model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,21 +21,49 @@ class TodoHomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: const HomeAppBar(),
-      body: Column(
-        children: const [
-          HomeProfileWidget(),
-          //TODO 後で実装（多分使わない？）
-          //const HomeName(),
-          //TODO 後で実装（多分使わない?);
-          //const ProfileButton(),
-          //TODO 後で実装
-          //const HomeStory(),
-          Expanded(
-            child: TodoPostItem(),
-          ),
-        ],
+      body: StreamBuilder<List<Todo>>(
+        stream: _bloc.todoStream,
+        builder: (BuildContext context, AsyncSnapshot<List<Todo>> snapshot) {
+          if (snapshot.hasData) {
+            return Column(
+              children: [
+                HomeProfileWidget(
+                  count: snapshot.data?.length.toInt(),
+                ),
+                //TODO 後で実装（多分使わない？）
+                //const HomeName(),
+                //TODO 後で実装（多分使わない?);
+                //const ProfileButton(),
+                //TODO 後で実装
+                //const HomeStory(),
+                Expanded(
+                  child: GridView.builder(
+                    itemCount: snapshot.data?.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3),
+                    itemBuilder: (BuildContext context, int index) {
+                      Todo todo = snapshot.data![index];
+                      return Card(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(todo.title.toString()),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  //child: TodoPostItem(),
+                ),
+              ],
+            );
+          }
+          return Container();
+        },
       ),
     );
   }
 }
-

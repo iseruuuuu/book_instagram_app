@@ -6,7 +6,12 @@ import '../../../../component/home/home_icon.dart';
 import 'home_number.dart';
 
 class HomeProfileWidget extends StatelessWidget {
-  const HomeProfileWidget({Key? key}) : super(key: key);
+  const HomeProfileWidget({
+    Key? key,
+    this.count,
+  }) : super(key: key);
+
+  final int? count;
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +38,14 @@ class HomeProfileWidget extends StatelessWidget {
                     title: Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          HomeIcon(),
-                          SizedBox(),
+                        children: [
+                          const HomeIcon(),
+                          const SizedBox(),
                           HomeNumber(
-                            count: 1,
+                            count: count!,
                             title: '投稿数',
                           ),
-                          HomeNumber(
+                          const HomeNumber(
                             count: 1,
                             title: '日目',
                           ),
