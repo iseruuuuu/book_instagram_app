@@ -60,7 +60,8 @@ dev_dependencies:
   path_provider:
   uuid:
 
-  datetime_picker_formfield:
+  enum_to_string:
+  shared_preferences:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
