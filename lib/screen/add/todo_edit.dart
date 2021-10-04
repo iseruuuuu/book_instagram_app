@@ -13,6 +13,8 @@ import 'package:book_instagram_app/component/register/register_photo_button.dart
 import 'package:book_instagram_app/repository/database/provider.dart';
 import 'package:book_instagram_app/repository/model/model.dart';
 
+import 'children2/todo_photo_widget.dart';
+
 class TodoEditScreen extends StatelessWidget {
   final TodoBloc? todoBloc;
   final Todo todo;
@@ -55,6 +57,9 @@ class TodoEditScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             _photoWidget(context),
+            // TodoPhotoWidget2(
+            //   image: _newTodo.title!,
+            // ),
             const SizedBox(height: 20),
             _noteTextFormField(),
             const Spacer(),
