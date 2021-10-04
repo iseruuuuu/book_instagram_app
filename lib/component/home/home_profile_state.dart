@@ -21,7 +21,7 @@ class HomeProfileController extends StateNotifier<HomeProfileState>
   HomeProfileController({
     required this.context,
     required this.preference,
-  }) : super(HomeProfileState());
+  }) : super(const HomeProfileState());
 
   final BuildContext context;
   final Preference preference;
