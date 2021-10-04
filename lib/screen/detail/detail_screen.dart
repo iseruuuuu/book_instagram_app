@@ -2,10 +2,12 @@
 import 'dart:io';
 
 // Flutter imports:
+import 'package:book_instagram_app/screen/add/todo_edit.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 // Project imports:
 import 'package:book_instagram_app/component/register/register_no_image.dart';
@@ -31,6 +33,7 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _bloc = Provider.of<TodoBloc>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -45,6 +48,19 @@ class DetailScreen extends StatelessWidget {
             color: Colors.black,
           ),
         ),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              _moveToEditView(context, _bloc, todo);
+            },
+            child: const Icon(
+              Icons.list,
+              size: 30,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(width: 10),
+        ],
       ),
       body: Container(
         padding: const EdgeInsets.all(0.0),
@@ -88,3 +104,11 @@ class DetailScreen extends StatelessWidget {
         ),
       );
 }
+
+_moveToEditView(BuildContext context, TodoBloc bloc, Todo todo) =>
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TodoEditScreen(todoBloc: bloc, todo: todo),
+      ),
+    );

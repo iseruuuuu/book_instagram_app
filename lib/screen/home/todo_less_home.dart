@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:book_instagram_app/screen/add/todo_edit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,6 @@ import 'package:book_instagram_app/component/home/home_profile.dart';
 import 'package:book_instagram_app/repository/database/provider.dart';
 import 'package:book_instagram_app/repository/model/model.dart';
 import 'package:book_instagram_app/screen/detail/detail_screen.dart';
-import 'package:book_instagram_app/screen/edit/todo_edit.dart';
 
 class TodoHomeScreen extends StatelessWidget {
   const TodoHomeScreen({Key? key}) : super(key: key);
@@ -74,11 +74,3 @@ class TodoHomeScreen extends StatelessWidget {
     );
   }
 }
-
-_moveToEditView(BuildContext context, TodoBloc bloc, Todo todo) =>
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => TodoEditScreen(todoBloc: bloc, todo: todo),
-      ),
-    );

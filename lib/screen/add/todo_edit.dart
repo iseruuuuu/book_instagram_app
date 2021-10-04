@@ -53,10 +53,11 @@ class TodoEditScreen extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.all(30.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             _photoWidget(context),
+            const SizedBox(height: 20),
             _noteTextFormField(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -126,7 +127,7 @@ class TodoEditScreen extends StatelessWidget {
   }
 
   void onRegister(BuildContext context) {
-    if (_newTodo.id == null ) {
+    if (_newTodo.id == null) {
       todoBloc?.create(_newTodo);
     } else {
       todoBloc?.update(_newTodo);
