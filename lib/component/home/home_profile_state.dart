@@ -1,11 +1,13 @@
 // Flutter imports:
-import 'package:book_instagram_app/repository/preference/preference.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:state_notifier/state_notifier.dart';
+
+// Project imports:
+import 'package:book_instagram_app/repository/preference/preference.dart';
 
 part 'home_profile_state.freezed.dart';
 

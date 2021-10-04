@@ -1,13 +1,15 @@
 // Flutter imports:
-import 'package:book_instagram_app/repository/preference/preference.dart';
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:provider/provider.dart';
+
 // Project imports:
+import 'package:book_instagram_app/repository/preference/preference.dart';
 import '../../../../component/home/home_icon.dart';
 import 'home_number.dart';
 import 'home_profile_state.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:provider/provider.dart';
 
 class HomeProfileWidget extends StatelessWidget {
   const HomeProfileWidget({
