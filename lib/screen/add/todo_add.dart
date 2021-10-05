@@ -93,13 +93,6 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
         },
       );
 
-  Widget _text() => Container(
-        child: Text(
-          //todo.note!,
-          widget._newTodo.note!,
-        ),
-      );
-
   // Widget _photoWidget(BuildContext context) => Center(
   //       child: widget.todo.title == ''
   //           ? GestureDetector(onTap: getImage, child: const NoImageWidget())
