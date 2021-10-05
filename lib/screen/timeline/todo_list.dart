@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:book_instagram_app/screen/add/todo_add.dart';
 import 'package:book_instagram_app/screen/add/todo_edit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -60,15 +61,17 @@ class TodoListScreen extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => TodoEditScreen(todoBloc: bloc, todo: todo),
+          //builder: (context) => TodoEditScreen(todoBloc: bloc, todo: todo),
+          builder: (context) => TodoAddScreen(todoBloc: bloc, todo: todo),
         ),
       );
 
   _moveToCreateView(BuildContext context, TodoBloc bloc) => Navigator.push(
         context,
         MaterialPageRoute(
+            //builder: (context) =>TodoEditScreen(todoBloc: bloc, todo: Todo.newTodo()),
             builder: (context) =>
-                TodoEditScreen(todoBloc: bloc, todo: Todo.newTodo()),
+                TodoAddScreen(todoBloc: bloc, todo: Todo.newTodo()),
             fullscreenDialog: true),
       );
 
