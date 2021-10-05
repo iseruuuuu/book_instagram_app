@@ -55,24 +55,22 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
           _confirmButton(context),
         ],
       ),
-      body: Container(
-        padding: const EdgeInsets.all(30.0),
-        child: Column(
-          children: <Widget>[
-            _photoWidget(context),
-            const SizedBox(height: 20),
-            _noteTextFormField(),
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _text(),
-                _photoButton(context),
-                _cameraButton(context),
-              ],
-            ),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          _photoWidget(context),
+          const SizedBox(height: 20),
+          _noteTextFormField(),
+          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _photoButton(context),
+              _cameraButton(context),
+            ],
+          ),
+          const SizedBox(height: 20),
+          const Spacer(),
+        ],
       ),
     );
   }
@@ -123,11 +121,16 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
   Widget _photoWidget(BuildContext context) => GestureDetector(
         onTap: getImage,
         child: Container(
-          color: Colors.black45,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
+              width: 1,
+            ),
+          ),
           child: Center(
             child: SizedBox(
-              width: MediaQuery.of(context).size.width / 1.1,
-              height: MediaQuery.of(context).size.width / 1.6,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.width / 1.5,
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
@@ -142,11 +145,14 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
         ),
       );
 
-  Widget _noteTextFormField() => TextFormField(
-        decoration: const InputDecoration(labelText: "Memo"),
-        initialValue: widget._newTodo.note,
-        maxLines: 3,
-        onChanged: _setNote,
+  Widget _noteTextFormField() => Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: TextFormField(
+          decoration: const InputDecoration(labelText: "Memo"),
+          initialValue: widget._newTodo.note,
+          maxLines: 3,
+          onChanged: _setNote,
+        ),
       );
 
   void _setNote(String note) {
