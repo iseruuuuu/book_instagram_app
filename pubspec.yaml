@@ -63,6 +63,9 @@ dev_dependencies:
   enum_to_string:
   shared_preferences:
 
+  #pathは:jpgみたいな拡張子を取得するため
+  path:
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

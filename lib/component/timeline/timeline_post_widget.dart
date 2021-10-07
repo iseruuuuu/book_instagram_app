@@ -1,11 +1,16 @@
 // Dart imports:
+import 'dart:typed_data';
 import 'dart:ui';
 
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class PostWidget extends StatelessWidget {
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
+
+class PostWidget extends StatefulWidget {
   const PostWidget({
     Key? key,
     required this.contents,
@@ -14,6 +19,34 @@ class PostWidget extends StatelessWidget {
 
   final String contents;
   final String imagePath;
+
+  @override
+  _PostWidgetState createState() => _PostWidgetState();
+}
+
+class _PostWidgetState extends State<PostWidget> {
+// class PostWidget extends StatelessWidget {
+//   const PostWidget({
+//     Key? key,
+//     required this.contents,
+//     required this.imagePath,
+//   }) : super(key: key);
+//
+//   final String contents;
+//   final String imagePath;
+
+  Future<Uint8List> SharedPrefRead() async {
+    //final SharedPreferences prefs = await SharedPreferences.getInstance();
+    //String imagePath = prefs.getString('key');
+
+    ///imageのpathをByteDataに変換
+    ByteData byte = await rootBundle.load(widget.imagePath);
+
+    ///ByteDataをUint8List変換
+    final Uint8List list = byte.buffer.asUint8List();
+    return list;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,15 +75,25 @@ class PostWidget extends StatelessWidget {
                       ),
                     ],
                     image: DecorationImage(
-                      image: AssetImage(imagePath),
+                      image: AssetImage(widget.imagePath),
                       fit: BoxFit.fill,
                     ),
                   ),
                 ),
+
+                // Image.memory(
+                //   imageFile.readAsBytesSync(),
+                // ),
+
+                // Image.memory(
+                //   //imageFile.readAsBytesSync(),
+                //   widget.imagePath
+                // ),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Text(
-                    contents,
+                    widget.contents,
                     style: const TextStyle(
                       fontSize: 15,
                     ),

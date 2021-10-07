@@ -1,5 +1,6 @@
 // Dart imports:
 import 'dart:io';
+import 'dart:typed_data';
 
 // Flutter imports:
 import 'package:flutter/material.dart';
@@ -8,10 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 // Project imports:
-import 'package:book_instagram_app/component/register/register_no_image.dart';
 import 'package:book_instagram_app/component/register/register_photo_button.dart';
 import 'package:book_instagram_app/repository/database/provider.dart';
 import 'package:book_instagram_app/repository/model/model.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 class TodoAddScreen extends StatefulWidget {
   final TodoBloc? todoBloc;
@@ -35,6 +37,11 @@ class TodoAddScreen extends StatefulWidget {
 }
 
 class _TodoAddScreenState extends State<TodoAddScreen> {
+  //final picker = ImagePicker();
+  final imagePicker = ImagePicker();
+  File? imageFile;
+  var images = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,7 +119,9 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
   //     );
 
   Widget _photoWidget(BuildContext context) => GestureDetector(
-        onTap: getImage,
+        //onTap: getImage,
+        onTap: _imgFromGallery,
+        //onTap: getImage,
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(
@@ -128,13 +137,28 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: FileImage(
-                      File(widget._newTodo.title!),
+                      //File(widget._newTodo.title!),
+                      File(images),
                     ),
                   ),
                 ),
               ),
             ),
           ),
+        ),
+      );
+
+  Widget _photoWidgetttt(BuildContext context) => GestureDetector(
+        //onTap: getImage,
+        onTap: _imgFromGallery,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
+              width: 1,
+            ),
+          ),
+          child: Image.memory(widget._newTodo.title as Uint8List),
         ),
       );
 
@@ -183,21 +207,51 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
   Widget _cameraButton(BuildContext context) => PhotoWidget(
         icon: Icons.photo_size_select_actual_outlined,
         text: ' 写真を選択',
-        onTap: getImage,
+        //onTap: getImage,
+        onTap: () {
+
+        },
       );
 
-  Future getImage() async {
-    final pickedFile =
-        await widget.picker.pickImage(source: ImageSource.gallery);
+  _imgFromGallery() async {
+    //Galleryから画像を取得
+    final PickedFile? pickedFile =
+        await imagePicker.getImage(source: ImageSource.gallery);
+    if (pickedFile == null) {
+      return;
+    }
+    //NOTE これでちゃんとファイルに保存される。
+    var savedFile = await saveLocalImage(pickedFile);
+
     setState(() {
-      if (pickedFile != null) {
-        //image = File(pickedFile.path);
-        var imagePath = pickedFile.path.toString();
-        widget._newTodo.title = imagePath;
-        print(imagePath);
-      } else {
-        print('画像が選択できませんでした');
-      }
+      print(pickedFile.path); //ちゃんと表示される。
+      //widget._newTodo.title = pickedFile.path;
+
+
+      //NOTE 表示用!!
+      images = pickedFile.path;
+
+
     });
+    //画像を渡すよう!!
+    widget._newTodo.title = savedFile as String;
+  }
+
+  static Future saveLocalImage(PickedFile image) async {
+    //ストレージパス取得
+    final path = await localPath;
+    //basename(image.path)で.jpgを取得。
+    final String fileName = basename(image.path);
+    final imagePath = '$path/$fileName';
+    //SharePreferenceで画像のストレージパスを保存
+    File imageFile = File(imagePath);
+    //選択した画像をByteDataにしてリターン
+    var saveFile = await imageFile.writeAsBytes(await image.readAsBytes());
+    return saveFile;
+  }
+
+  static Future get localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+    return directory.path;
   }
 }
