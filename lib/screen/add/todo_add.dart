@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 // Flutter imports:
+import 'package:book_instagram_app/component/register/register_no_image.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -119,33 +120,34 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
   //     );
 
   Widget _photoWidget(BuildContext context) => GestureDetector(
-        //onTap: getImage,
         onTap: _imgFromGallery,
-        //onTap: getImage,
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.black,
-              width: 1,
-            ),
-          ),
-          child: Center(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.width / 1.5,
-              child: Container(
+        //child: widget._newTodo.title == null
+        child: images == ''
+            ? const NoImageWidget()
+            : Container(
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: FileImage(
-                      //File(widget._newTodo.title!),
-                      File(images),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 1,
+                  ),
+                ),
+                child: Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.width / 1.5,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: FileImage(
+                            //File(widget._newTodo.title!),
+                            File(images),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ),
-        ),
       );
 
   Widget _photoWidgetttt(BuildContext context) => GestureDetector(
@@ -208,9 +210,7 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
         icon: Icons.photo_size_select_actual_outlined,
         text: ' 写真を選択',
         //onTap: getImage,
-        onTap: () {
-
-        },
+        onTap: () {},
       );
 
   _imgFromGallery() async {
@@ -222,19 +222,12 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
     }
     //NOTE これでちゃんとファイルに保存される。
     var savedFile = await saveLocalImage(pickedFile);
-
     setState(() {
-      print(pickedFile.path); //ちゃんと表示される。
-      //widget._newTodo.title = pickedFile.path;
-
-
       //NOTE 表示用!!
       images = pickedFile.path;
-
-
+      //NOTE 追加用!!
+      widget._newTodo.title = savedFile.toString();
     });
-    //画像を渡すよう!!
-    widget._newTodo.title = savedFile as String;
   }
 
   static Future saveLocalImage(PickedFile image) async {
