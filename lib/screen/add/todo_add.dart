@@ -38,7 +38,6 @@ class TodoAddScreen extends StatefulWidget {
 }
 
 class _TodoAddScreenState extends State<TodoAddScreen> {
-  //final picker = ImagePicker();
   final imagePicker = ImagePicker();
   File? imageFile;
   var images = '';
@@ -72,8 +71,21 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _photoButton(context),
+              //_photoButton(context),
               _cameraButton(context),
+              PhotoWidget(
+                icon: Icons.camera_alt_outlined,
+                text: ' 写真を撮る',
+                onTap: getCamera,
+              ),
+              PhotoWidget(
+                icon: Icons.photo_size_select_actual_outlined,
+                text: ' 写真を選択',
+                onTap: () {
+                  //TODO 後でやる
+                },
+                //onTap: getImage,
+              ),
             ],
           ),
           const SizedBox(height: 20),
@@ -101,47 +113,20 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
         },
       );
 
-  // Widget _photoWidget(BuildContext context) => Center(
-  //       child: widget.todo.title == ''
-  //           ? GestureDetector(onTap: getImage, child: const NoImageWidget())
-  //           : SizedBox(
-  //               width: MediaQuery.of(context).size.width / 1.1,
-  //               height: MediaQuery.of(context).size.width / 1.6,
-  //               child: Container(
-  //                 decoration: BoxDecoration(
-  //                   image: DecorationImage(
-  //                     image: FileImage(
-  //                       File(widget._newTodo.title!),
-  //                     ),
-  //                   ),
-  //                 ),
-  //               ),
-  //             ),
-  //     );
-
   Widget _photoWidget(BuildContext context) => GestureDetector(
         onTap: _imgFromGallery,
-        //child: widget._newTodo.title == null
         child: images == ''
             ? const NoImageWidget()
-            : Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 1,
-                  ),
-                ),
-                child: Center(
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.width / 1.5,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: FileImage(
-                            //File(widget._newTodo.title!),
-                            File(images),
-                          ),
+            : Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.width / 1.5,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: FileImage(
+                          //File(widget._newTodo.title!),
+                          File(images),
                         ),
                       ),
                     ),
@@ -150,33 +135,18 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
               ),
       );
 
-  Widget _photoWidgetttt(BuildContext context) => GestureDetector(
-        //onTap: getImage,
-        onTap: _imgFromGallery,
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.black,
-              width: 1,
-            ),
-          ),
-          child: Image.memory(widget._newTodo.title as Uint8List),
-        ),
-      );
-
   Widget _noteTextFormField() => Padding(
         padding: const EdgeInsets.all(30.0),
         child: TextFormField(
           decoration: const InputDecoration(labelText: "Memo"),
           initialValue: widget._newTodo.note,
           maxLines: 3,
-          onChanged: _setNote,
+          //onChanged: _setNote,
+          onChanged: (note) {
+            widget._newTodo.note = note;
+          },
         ),
       );
-
-  void _setNote(String note) {
-    widget._newTodo.note = note;
-  }
 
   void onRegister(BuildContext context) {
     if (widget._newTodo.id == null) {
@@ -186,12 +156,6 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
     }
     Navigator.of(context).pop();
   }
-
-  Widget _photoButton(BuildContext context) => PhotoWidget(
-        icon: Icons.camera_alt_outlined,
-        text: ' 写真を撮る',
-        onTap: getCamera,
-      );
 
   Future getCamera() async {
     //カメラを開く
@@ -205,13 +169,6 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
       print('カメラで画像が取得できませんでした');
     }
   }
-
-  Widget _cameraButton(BuildContext context) => PhotoWidget(
-        icon: Icons.photo_size_select_actual_outlined,
-        text: ' 写真を選択',
-        //onTap: getImage,
-        onTap: () {},
-      );
 
   _imgFromGallery() async {
     //Galleryから画像を取得
