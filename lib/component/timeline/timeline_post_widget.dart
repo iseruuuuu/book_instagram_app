@@ -15,10 +15,12 @@ class PostWidget extends StatefulWidget {
     Key? key,
     required this.contents,
     required this.imagePath,
+    //required this.image,
   }) : super(key: key);
 
   final String contents;
   final String imagePath;
+  //final Uint8List image;
 
   @override
   _PostWidgetState createState() => _PostWidgetState();
@@ -46,7 +48,6 @@ class _PostWidgetState extends State<PostWidget> {
     final Uint8List list = byte.buffer.asUint8List();
     return list;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +83,8 @@ class _PostWidgetState extends State<PostWidget> {
                 ),
 
                 // Image.memory(
-                //   imageFile.readAsBytesSync(),
+                //   //imageFile.readAsBytesSync(),
+                //   widget.image,
                 // ),
 
                 // Image.memory(

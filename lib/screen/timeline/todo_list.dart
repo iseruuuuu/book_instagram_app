@@ -45,8 +45,9 @@ class TodoListScreen extends StatelessWidget {
                     child: PostWidget(
                       contents: '${todo.note}',
                       imagePath: '${todo.title}',
+                      //image: todo.title,
                       //imagePath: '/Users/ryutaroiseki/Library/Developer/CoreSimulator/Devices/90D818D5-1DAE-4E33-A298-25FE39926541/data/Containers/Data/Application/668B37DB-8A72-4493-BC09-00DAB21A8ECD/Documents/image_picker_841E38B7-56ED-4525-916F-860070BE0572-16363-000000847FC389C4.jpg',
-                    //imagePath: '/Users/ryutaroiseki/Library/Developer/CoreSimulator/Devices/90D818D5-1DAE-4E33-A298-25FE39926541/data/Containers/Data/Application/8C1739D3-1644-4096-B38E-C74DE5ED5E64/Documents/image_picker_90508342-C58D-4098-A4DE-4F527906EFDA-5419-00000069ACD5B8F7.jpg',
+                      //imagePath: '/Users/ryutaroiseki/Library/Developer/CoreSimulator/Devices/90D818D5-1DAE-4E33-A298-25FE39926541/data/Containers/Data/Application/8C1739D3-1644-4096-B38E-C74DE5ED5E64/Documents/image_picker_90508342-C58D-4098-A4DE-4F527906EFDA-5419-00000069ACD5B8F7.jpg',
                     ),
                   ),
                 );
