@@ -7,7 +7,7 @@ class NoImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width / 1.1,
+      width: MediaQuery.of(context).size.width / 1.01,
       height: MediaQuery.of(context).size.width / 1.6,
       decoration: BoxDecoration(
         border: Border.all(
