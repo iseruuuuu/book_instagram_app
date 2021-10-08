@@ -72,7 +72,7 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               //_photoButton(context),
-              _cameraButton(context),
+              //_cameraButton(context),
               PhotoWidget(
                 icon: Icons.camera_alt_outlined,
                 text: ' 写真を撮る',
