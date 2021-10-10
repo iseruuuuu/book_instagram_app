@@ -112,3 +112,4 @@ _moveToEditView(BuildContext context, TodoBloc bloc, Todo todo) =>
         builder: (context) => TodoEditScreen(todoBloc: bloc, todo: todo),
       ),
     );
+
