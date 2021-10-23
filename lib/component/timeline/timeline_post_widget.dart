@@ -1,4 +1,5 @@
 // Dart imports:
+import 'dart:convert';
 import 'dart:typed_data';
 import 'dart:ui';
 
@@ -20,6 +21,7 @@ class PostWidget extends StatefulWidget {
 
   final String contents;
   final String imagePath;
+
   //final Uint8List image;
 
   @override
@@ -27,26 +29,27 @@ class PostWidget extends StatefulWidget {
 }
 
 class _PostWidgetState extends State<PostWidget> {
-// class PostWidget extends StatelessWidget {
-//   const PostWidget({
-//     Key? key,
-//     required this.contents,
-//     required this.imagePath,
-//   }) : super(key: key);
-//
-//   final String contents;
-//   final String imagePath;
-
-  Future<Uint8List> SharedPrefRead() async {
+  Future<Uint8List> sharedPrefRead() async {
     //final SharedPreferences prefs = await SharedPreferences.getInstance();
     //String imagePath = prefs.getString('key');
 
-    ///imageのpathをByteDataに変換
-    ByteData byte = await rootBundle.load(widget.imagePath);
+    // ///imageのpathをByteDataに変換
+    // ByteData byte = await rootBundle.load(widget.imagePath);
+    //
+    // ///ByteDataをUint8List変換
+    // final Uint8List list = byte.buffer.asUint8List();
+    // return list;
 
-    ///ByteDataをUint8List変換
-    final Uint8List list = byte.buffer.asUint8List();
-    return list;
+    //Uint8List types = Uint8List(widget.imagePath)
+    List<int> list = widget.imagePath.codeUnits;
+    Uint8List bytes = Uint8List.fromList(list);
+    // String string= String.fromCharCodes(bytes);
+    return bytes;
+  }
+
+  @override
+  void initState() {
+    //print(widget.imagePath);
   }
 
   @override
@@ -63,29 +66,30 @@ class _PostWidgetState extends State<PostWidget> {
             padding: const EdgeInsets.symmetric(vertical: 30),
             child: Column(
               children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black45,
-                        offset: Offset(0, 5),
-                        blurRadius: 8.0,
-                      ),
-                    ],
-                    image: DecorationImage(
-                      image: AssetImage(widget.imagePath),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                // Container(
+                //   width: MediaQuery.of(context).size.width,
+                //   height: MediaQuery.of(context).size.width,
+                //   decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(25),
+                //     boxShadow: const [
+                //       BoxShadow(
+                //         color: Colors.black45,
+                //         offset: Offset(0, 5),
+                //         blurRadius: 8.0,
+                //       ),
+                //     ],
+                //     image: DecorationImage(
+                //       image: AssetImage(widget.imagePath),
+                //       fit: BoxFit.fill,
+                //     ),
+                //   ),
+                // ),
+
+                Image.memory(
+                  base64Decode(widget.imagePath),
                 ),
 
-                // Image.memory(
-                //   //imageFile.readAsBytesSync(),
-                //   widget.image,
-                // ),
+               // Text(widget.imagePath),
 
                 // Image.memory(
                 //   //imageFile.readAsBytesSync(),

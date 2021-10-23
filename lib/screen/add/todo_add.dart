@@ -179,25 +179,59 @@ class _TodoAddScreenState extends State<TodoAddScreen> {
     }
     //NOTE これでちゃんとファイルに保存される。
     var savedFile = await saveLocalImage(pickedFile);
+
+    var savedFile2 = await Image(pickedFile);
+
+    //print(savedFile);
     setState(() {
       //NOTE 表示用!!
       images = pickedFile.path;
+
       //NOTE 追加用!!
-      widget._newTodo.title = savedFile.toString();
+      //widget._newTodo.title = savedFile.toString();
+
+     //widget._newTodo.title = savedFile2;
+
+      widget._newTodo.title = pickedFile.path;
+
+
+
+
+      ///Users/ryutaroiseki/Library/Developer/CoreSimulator/Devices/14D816B2-79F6-4444-9BBB-6B3566CCE4AC/data/Containers/Data/Application/4C9DD0FB-A413-4331-867A-A4074587617F/tmp/image_picker_BE9C274C-8F1B-48C4-8F32-5E36CCC17A78-3917-0000055D4ACE2321.jpg
+      //print(images);
+      //File: '/Users/ryutaroiseki/Library/Developer/CoreSimulator/Devices/14D816B2-79F6-4444-9BBB-6B3566CCE4AC/data/Containers/Data/Application/4C9DD0FB-A413-4331-867A-A4074587617F/Documents/image_picker_BE9C274C-8F1B-48C4-8F32-5E36CCC17A78-3917-0000055D4ACE2321.jpg'
+      //print(widget._newTodo.title);
     });
   }
 
   static Future saveLocalImage(PickedFile image) async {
     //ストレージパス取得
     final path = await localPath;
+    //TODO /Users/ryutaroiseki/Library/Developer/CoreSimulator/Devices/7C3BDFE2-2727-4833-ABE6-B2DECAAFE400/data/Containers/Data/Application/423E7DF0-24BC-4B94-A769-9F145B07720E/Documents
+    //print(path);
     //basename(image.path)で.jpgを取得。
     final String fileName = basename(image.path);
+    //TODO image_picker_5314503F-DC96-49BA-B2FB-6516BA339275-12949-00000BAC9C5A4BB0.jpg
+    //print(fileName);
     final imagePath = '$path/$fileName';
+    //TODO /Users/ryutaroiseki/Library/Developer/CoreSimulator/Devices/7C3BDFE2-2727-4833-ABE6-B2DECAAFE400/data/Containers/Data/Application/423E7DF0-24BC-4B94-A769-9F145B07720E/Documents/image_picker_69C50F5D-5899-4748-B153-065FD689942F-12949-00000BC780BDDE12.jpg
+    //print(imagePath);
     //SharePreferenceで画像のストレージパスを保存
     File imageFile = File(imagePath);
+    //TODO  File: '/Users/ryutaroiseki/Library/Developer/CoreSimulator/Devices/7C3BDFE2-2727-4833-ABE6-B2DECAAFE400/data/Containers/Data/Application/423E7DF0-24BC-4B94-A769-9F145B07720E/Documents/image_picker_041D0AD5-8B43-400F-BF44-9145245819DF-12949-00000C081584695E.jpg'
+    //print(imageFile);
     //選択した画像をByteDataにしてリターン
     var saveFile = await imageFile.writeAsBytes(await image.readAsBytes());
+    //TODO   File: '/Users/ryutaroiseki/Library/Developer/CoreSimulator/Devices/7C3BDFE2-2727-4833-ABE6-B2DECAAFE400/data/Containers/Data/Application/423E7DF0-24BC-4B94-A769-9F145B07720E/Documents/image_picker_6F49913C-6E9F-49C4-BDF2-0E6A160055CB-12949-00000C1C8A53690A.jpg'
+    //print(saveFile);
     return saveFile;
+  }
+
+  static Future Image(PickedFile image) async {
+    final path = await localPath;
+    final String fileName = basename(image.path);
+    final imagePath = '$path/$fileName';
+    return imagePath;
   }
 
   static Future get localPath async {
